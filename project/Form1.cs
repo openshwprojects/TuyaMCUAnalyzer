@@ -59,6 +59,7 @@ namespace TuyaMCUAnalyzer
             RichTextBoxExtensions.AppendText(richTextBox1, p[3].ToString("X2") + "\t\t", Color.Red);
             RichTextBoxExtensions.AppendText(richTextBox1, p[4].ToString("X2") + " " + p[5].ToString("X2") + "\t", Color.Green);
             string cmdName = "Unk";
+            // https://images.tuyacn.com/smart/aircondition/Guide-to-Interworking-with-the-Tuya-MCU.pdf
             switch (cmd)
             {
                 case 0:
@@ -75,6 +76,9 @@ namespace TuyaMCUAnalyzer
                     break;
                 case 7:
                     cmdName = "State";
+                    break;
+                case 8:
+                    cmdName = "QueryInitStatus";
                     break;
                 case 0x1C:
                     cmdName = "Date";
@@ -446,25 +450,39 @@ namespace TuyaMCUAnalyzer
             }
             refresh();
         }
+        public void loadFileBinary(string fname)
+        {
+            byte[] bytes = File.ReadAllBytes(fname);
+            string data;
+            data = "";
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                data += bytes[i].ToString("X2");
+            }
+            setData(data);
+        }
+        public void setData(string data)
+        {
+            textBox1.Text = data;
+            refresh();
+        }
+        public void loadFileText(string fname)
+        {
+            string data;
+            data = File.ReadAllText(fname);
+            setData(data);
+        }
         public void loadFile(string fname)
         {
             string ext = Path.GetExtension(fname);
-            string data;
             if (ext == ".bin")
             {
-                byte[] bytes = File.ReadAllBytes(fname);
-                data = "";
-                for(int i = 0; i < bytes.Length; i++)
-                {
-                    data += bytes[i].ToString("X2");
-                }
+                loadFileBinary(fname);
             }
             else
             {
-                 data = File.ReadAllText(fname);
+                loadFileText(fname);
             }
-            textBox1.Text = data;
-            refresh();
         }
         private void exampleClickListener(object sender, EventArgs e)
         {
@@ -542,6 +560,28 @@ namespace TuyaMCUAnalyzer
         private void ourTutorialsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.elektroda.com/rtvforum/forum517.html");
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Binary files (*.bin)|*.bin|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = openFileDialog.FileName;
+                loadFileBinary(fileName);
+            }
+        }
+
+        private void openTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.bin|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = openFileDialog.FileName;
+                loadFileText(fileName);
+            }
         }
     }
 }

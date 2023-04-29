@@ -40,6 +40,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.examplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ourForumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ourTutorialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ourYoutubeChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,11 +52,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.richTextBoxComparer = new System.Windows.Forms.RichTextBox();
-            this.notAvailableInThisVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ourForumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ourTutorialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ourYoutubeChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -135,7 +136,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.notAvailableInThisVersionToolStripMenuItem});
+            this.openToolStripMenuItem,
+            this.openTextToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -145,6 +147,36 @@
             this.examplesToolStripMenuItem.Name = "examplesToolStripMenuItem";
             this.examplesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.examplesToolStripMenuItem.Text = "Examples";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ourForumToolStripMenuItem,
+            this.ourTutorialsToolStripMenuItem,
+            this.ourYoutubeChannelToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // ourForumToolStripMenuItem
+            // 
+            this.ourForumToolStripMenuItem.Name = "ourForumToolStripMenuItem";
+            this.ourForumToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.ourForumToolStripMenuItem.Text = "Our forum";
+            this.ourForumToolStripMenuItem.Click += new System.EventHandler(this.ourForumToolStripMenuItem_Click);
+            // 
+            // ourTutorialsToolStripMenuItem
+            // 
+            this.ourTutorialsToolStripMenuItem.Name = "ourTutorialsToolStripMenuItem";
+            this.ourTutorialsToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.ourTutorialsToolStripMenuItem.Text = "Our tutorials";
+            this.ourTutorialsToolStripMenuItem.Click += new System.EventHandler(this.ourTutorialsToolStripMenuItem_Click);
+            // 
+            // ourYoutubeChannelToolStripMenuItem
+            // 
+            this.ourYoutubeChannelToolStripMenuItem.Name = "ourYoutubeChannelToolStripMenuItem";
+            this.ourYoutubeChannelToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.ourYoutubeChannelToolStripMenuItem.Text = "Our Youtube Channel";
             // 
             // label2
             // 
@@ -232,41 +264,19 @@
             this.richTextBoxComparer.Text = "";
             this.richTextBoxComparer.TextChanged += new System.EventHandler(this.richTextBoxComparer_TextChanged);
             // 
-            // notAvailableInThisVersionToolStripMenuItem
+            // openToolStripMenuItem
             // 
-            this.notAvailableInThisVersionToolStripMenuItem.Name = "notAvailableInThisVersionToolStripMenuItem";
-            this.notAvailableInThisVersionToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.notAvailableInThisVersionToolStripMenuItem.Text = "Not available in this version";
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Open binary..";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
-            // helpToolStripMenuItem
+            // openTextToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ourForumToolStripMenuItem,
-            this.ourTutorialsToolStripMenuItem,
-            this.ourYoutubeChannelToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // ourForumToolStripMenuItem
-            // 
-            this.ourForumToolStripMenuItem.Name = "ourForumToolStripMenuItem";
-            this.ourForumToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ourForumToolStripMenuItem.Text = "Our forum";
-            this.ourForumToolStripMenuItem.Click += new System.EventHandler(this.ourForumToolStripMenuItem_Click);
-            // 
-            // ourTutorialsToolStripMenuItem
-            // 
-            this.ourTutorialsToolStripMenuItem.Name = "ourTutorialsToolStripMenuItem";
-            this.ourTutorialsToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.ourTutorialsToolStripMenuItem.Text = "Our tutorials";
-            this.ourTutorialsToolStripMenuItem.Click += new System.EventHandler(this.ourTutorialsToolStripMenuItem_Click);
-            // 
-            // ourYoutubeChannelToolStripMenuItem
-            // 
-            this.ourYoutubeChannelToolStripMenuItem.Name = "ourYoutubeChannelToolStripMenuItem";
-            this.ourYoutubeChannelToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.ourYoutubeChannelToolStripMenuItem.Text = "Our Youtube Channel";
+            this.openTextToolStripMenuItem.Name = "openTextToolStripMenuItem";
+            this.openTextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openTextToolStripMenuItem.Text = "Open text...";
+            this.openTextToolStripMenuItem.Click += new System.EventHandler(this.openTextToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -313,11 +323,12 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox richTextBoxComparer;
-        private System.Windows.Forms.ToolStripMenuItem notAvailableInThisVersionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ourForumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ourTutorialsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ourYoutubeChannelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openTextToolStripMenuItem;
     }
 }
 
