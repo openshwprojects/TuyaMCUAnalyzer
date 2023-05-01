@@ -1,7 +1,9 @@
 # Introduction
 
 This tools allows you to quickly analyze captured hex data of TuyaMCU packets. Pasted hex data is split into TuyaMCU packets, analyzed and coloured according to each byte meaning. TuyaMCU variables (dpIDs) are displayed along with their types and values, so you can efficiently analyze devices and add their support to [OpenBeken](https://github.com/openshwprojects/OpenBK7231T_App) 
-
+Ver 0.2:
+![image](https://user-images.githubusercontent.com/85486843/235418671-03ec416c-eef0-40b2-97a7-c41c0b4d757b.png)
+Ver 0.1:
 ![image](https://user-images.githubusercontent.com/85486843/230483065-1a87ef91-b144-43b4-b200-9cf3f1f408d4.png)
 
 # Compiling
