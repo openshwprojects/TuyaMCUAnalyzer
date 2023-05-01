@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.listViewAvailableIDs = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.examplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ourForumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,32 +51,36 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.richTextBoxSrc = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelTXStats = new System.Windows.Forms.Label();
+            this.labelRXStats = new System.Windows.Forms.Label();
+            this.buttonOpenCloseTX = new System.Windows.Forms.Button();
+            this.comboBoxBaud = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.buttonOpenCloseRX = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBoxPortTX = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxPortRX = new System.Windows.Forms.ComboBox();
+            this.checkBoxRealtimeDual = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.richTextBoxComparer = new System.Windows.Forms.RichTextBox();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(6, 19);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1120, 107);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(3, 145);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 163);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(801, 524);
+            this.richTextBox1.Size = new System.Drawing.Size(801, 506);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -86,9 +92,9 @@
             this.columnHeader1,
             this.columnHeader2});
             this.listViewAvailableIDs.HideSelection = false;
-            this.listViewAvailableIDs.Location = new System.Drawing.Point(814, 232);
+            this.listViewAvailableIDs.Location = new System.Drawing.Point(814, 257);
             this.listViewAvailableIDs.Name = "listViewAvailableIDs";
-            this.listViewAvailableIDs.Size = new System.Drawing.Size(324, 270);
+            this.listViewAvailableIDs.Size = new System.Drawing.Size(324, 412);
             this.listViewAvailableIDs.TabIndex = 2;
             this.listViewAvailableIDs.UseCompatibleStateImageBehavior = false;
             this.listViewAvailableIDs.View = System.Windows.Forms.View.Details;
@@ -142,6 +148,20 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.openToolStripMenuItem.Text = "Open binary..";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // openTextToolStripMenuItem
+            // 
+            this.openTextToolStripMenuItem.Name = "openTextToolStripMenuItem";
+            this.openTextToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.openTextToolStripMenuItem.Text = "Open text...";
+            this.openTextToolStripMenuItem.Click += new System.EventHandler(this.openTextToolStripMenuItem_Click);
+            // 
             // examplesToolStripMenuItem
             // 
             this.examplesToolStripMenuItem.Name = "examplesToolStripMenuItem";
@@ -190,7 +210,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 129);
+            this.label3.Location = new System.Drawing.Point(0, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(390, 13);
             this.label3.TabIndex = 6;
@@ -199,9 +219,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(816, 138);
+            this.label4.Location = new System.Drawing.Point(816, 176);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(215, 91);
+            this.label4.Size = new System.Drawing.Size(289, 78);
             this.label4.TabIndex = 7;
             this.label4.Text = resources.GetString("label4.Text");
             // 
@@ -218,10 +238,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonClear);
+            this.tabPage1.Controls.Add(this.richTextBoxSrc);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.checkBoxRealtimeDual);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.listViewAvailableIDs);
-            this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.richTextBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -231,6 +254,144 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Decode tool";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(729, 129);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 11;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // richTextBoxSrc
+            // 
+            this.richTextBoxSrc.Location = new System.Drawing.Point(6, 17);
+            this.richTextBoxSrc.Name = "richTextBoxSrc";
+            this.richTextBoxSrc.Size = new System.Drawing.Size(801, 99);
+            this.richTextBoxSrc.TabIndex = 10;
+            this.richTextBoxSrc.Text = "";
+            this.richTextBoxSrc.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelTXStats);
+            this.panel1.Controls.Add(this.labelRXStats);
+            this.panel1.Controls.Add(this.buttonOpenCloseTX);
+            this.panel1.Controls.Add(this.comboBoxBaud);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.buttonOpenCloseRX);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.comboBoxPortTX);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.comboBoxPortRX);
+            this.panel1.Location = new System.Drawing.Point(819, 43);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(322, 130);
+            this.panel1.TabIndex = 9;
+            // 
+            // labelTXStats
+            // 
+            this.labelTXStats.AutoSize = true;
+            this.labelTXStats.Location = new System.Drawing.Point(4, 86);
+            this.labelTXStats.Name = "labelTXStats";
+            this.labelTXStats.Size = new System.Drawing.Size(46, 13);
+            this.labelTXStats.TabIndex = 9;
+            this.labelTXStats.Text = "TX stats";
+            // 
+            // labelRXStats
+            // 
+            this.labelRXStats.AutoSize = true;
+            this.labelRXStats.Location = new System.Drawing.Point(4, 37);
+            this.labelRXStats.Name = "labelRXStats";
+            this.labelRXStats.Size = new System.Drawing.Size(47, 13);
+            this.labelRXStats.TabIndex = 8;
+            this.labelRXStats.Text = "RX stats";
+            // 
+            // buttonOpenCloseTX
+            // 
+            this.buttonOpenCloseTX.Location = new System.Drawing.Point(155, 55);
+            this.buttonOpenCloseTX.Name = "buttonOpenCloseTX";
+            this.buttonOpenCloseTX.Size = new System.Drawing.Size(75, 23);
+            this.buttonOpenCloseTX.TabIndex = 7;
+            this.buttonOpenCloseTX.Text = "Open";
+            this.buttonOpenCloseTX.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxBaud
+            // 
+            this.comboBoxBaud.FormattingEnabled = true;
+            this.comboBoxBaud.Items.AddRange(new object[] {
+            "9600",
+            "115200"});
+            this.comboBoxBaud.Location = new System.Drawing.Point(58, 102);
+            this.comboBoxBaud.Name = "comboBoxBaud";
+            this.comboBoxBaud.Size = new System.Drawing.Size(91, 21);
+            this.comboBoxBaud.TabIndex = 6;
+            this.comboBoxBaud.SelectedIndexChanged += new System.EventHandler(this.comboBoxBaud_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 105);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Baud:";
+            // 
+            // buttonOpenCloseRX
+            // 
+            this.buttonOpenCloseRX.Location = new System.Drawing.Point(155, 12);
+            this.buttonOpenCloseRX.Name = "buttonOpenCloseRX";
+            this.buttonOpenCloseRX.Size = new System.Drawing.Size(75, 23);
+            this.buttonOpenCloseRX.TabIndex = 4;
+            this.buttonOpenCloseRX.Text = "Open";
+            this.buttonOpenCloseRX.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 60);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "WiFi TX:";
+            // 
+            // comboBoxPortTX
+            // 
+            this.comboBoxPortTX.FormattingEnabled = true;
+            this.comboBoxPortTX.Location = new System.Drawing.Point(58, 57);
+            this.comboBoxPortTX.Name = "comboBoxPortTX";
+            this.comboBoxPortTX.Size = new System.Drawing.Size(91, 21);
+            this.comboBoxPortTX.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "WiFi RX:";
+            // 
+            // comboBoxPortRX
+            // 
+            this.comboBoxPortRX.FormattingEnabled = true;
+            this.comboBoxPortRX.Location = new System.Drawing.Point(58, 12);
+            this.comboBoxPortRX.Name = "comboBoxPortRX";
+            this.comboBoxPortRX.Size = new System.Drawing.Size(91, 21);
+            this.comboBoxPortRX.TabIndex = 0;
+            // 
+            // checkBoxRealtimeDual
+            // 
+            this.checkBoxRealtimeDual.AutoSize = true;
+            this.checkBoxRealtimeDual.Location = new System.Drawing.Point(819, 19);
+            this.checkBoxRealtimeDual.Name = "checkBoxRealtimeDual";
+            this.checkBoxRealtimeDual.Size = new System.Drawing.Size(195, 17);
+            this.checkBoxRealtimeDual.TabIndex = 8;
+            this.checkBoxRealtimeDual.Text = "Realtime Dual UART Capture Mode";
+            this.checkBoxRealtimeDual.UseVisualStyleBackColor = true;
+            this.checkBoxRealtimeDual.CheckedChanged += new System.EventHandler(this.checkBoxRealtimeDual_CheckedChanged);
             // 
             // tabPage2
             // 
@@ -264,19 +425,11 @@
             this.richTextBoxComparer.Text = "";
             this.richTextBoxComparer.TextChanged += new System.EventHandler(this.richTextBoxComparer_TextChanged);
             // 
-            // openToolStripMenuItem
+            // timer1
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openToolStripMenuItem.Text = "Open binary..";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // openTextToolStripMenuItem
-            // 
-            this.openTextToolStripMenuItem.Name = "openTextToolStripMenuItem";
-            this.openTextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openTextToolStripMenuItem.Text = "Open text...";
-            this.openTextToolStripMenuItem.Click += new System.EventHandler(this.openTextToolStripMenuItem_Click);
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 25;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -295,6 +448,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -303,8 +458,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ListView listViewAvailableIDs;
         private System.Windows.Forms.ColumnHeader id;
@@ -329,6 +482,21 @@
         private System.Windows.Forms.ToolStripMenuItem ourYoutubeChannelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openTextToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox comboBoxBaud;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button buttonOpenCloseRX;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBoxPortTX;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxPortRX;
+        private System.Windows.Forms.CheckBox checkBoxRealtimeDual;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button buttonOpenCloseTX;
+        private System.Windows.Forms.Label labelTXStats;
+        private System.Windows.Forms.Label labelRXStats;
+        private System.Windows.Forms.RichTextBox richTextBoxSrc;
+        private System.Windows.Forms.Button buttonClear;
     }
 }
 

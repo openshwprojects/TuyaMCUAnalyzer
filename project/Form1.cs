@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Ports;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace TuyaMCUAnalyzer
     public partial class Form1 : Form
     {
         IDsTracker tracker;
+        SinglePort portRX, portTX;
 
         public Form1()
         {
@@ -19,6 +21,27 @@ namespace TuyaMCUAnalyzer
         }
         bool bUseVarsForVer0Cmd6InsteadOfDate = true;
 
+        private string getSpecialMarker(ref List<byte> p)
+        {
+            if (p.Count < specialMarkerCount)
+                return "";
+            for(int i = 0; i < specialMarkerCount; i++)
+            {
+                if (p[0] != p[i])
+                    return "";
+            }
+            string r = "";
+            if (p[0] == special_marker_recv)
+                r = "Received by WiFi module:";
+            else if (p[0] == special_marker_sent)
+                r = "Sent by WiFi module:";
+            if (r.Length >0)
+            {
+                p.RemoveRange(0, specialMarkerCount);
+                return r;
+            }
+            return "";
+        }
         private List<byte> getNextPacket(ref List<byte> p)
         {
             for(int i = 0; i < p.Count-7; i++)
@@ -357,15 +380,47 @@ namespace TuyaMCUAnalyzer
         {
             refresh();
         }
+        byte special_marker_sent = 0x73;
+        byte special_marker_recv = 0x72;
+        int specialMarkerCount = 10;
         void refresh() {
             tracker = new IDsTracker();
             richTextBox1.Clear();
-            string text = textBox1.Text;
+            string text = richTextBoxSrc.Text;
             List<byte> r = new List<byte>();
             string ch;
             byte value;
             for (int i = 0; i < text.Length; )
             {
+                if(text[i] == '/' && i < text.Length-1 && text[i+1] == '/')
+                {
+                    if(i < text.Length-2)
+                    {
+                        if(text[i+2] == 'S')
+                        {
+                            for(int j = 0; j < specialMarkerCount; j++)
+                            {
+                                r.Add(special_marker_sent);
+                            }
+                        }
+                        if(text[i+2] == 'R')
+                        {
+                            for (int j = 0; j < specialMarkerCount; j++)
+                            {
+                                r.Add(special_marker_recv);
+                            }
+                        }
+                    }
+                    while (i < text.Length)
+                    {
+                        i++;
+                        if(text[i] == '\n')
+                        {
+                            break;
+                        }
+                    }
+                    continue;
+                }
                 if(text[i] == ' ' || text[i] == '\n' || text[i] == '\r' || text[i] == '\t')
                 {
                     i++;
@@ -386,6 +441,12 @@ namespace TuyaMCUAnalyzer
             List<byte> packet = null;
             while(true)
             {
+                string comment = getSpecialMarker(ref r);
+                if(comment.Length>0)
+                {
+                    RichTextBoxExtensions.AppendText(richTextBox1, comment+Environment.NewLine, Color.Black);
+                    continue;
+                }
                 packet = getNextPacket(ref r);
                 if(packet == null)
                 {
@@ -432,8 +493,9 @@ namespace TuyaMCUAnalyzer
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            comboBoxBaud.SelectedIndex = 0;
             string samplesDir = findSamplesPath();
-           string [] samples =  Directory.GetFiles(samplesDir);
+            string [] samples =  Directory.GetFiles(samplesDir);
             for(int i = 0; i < samples.Length; i++)
             {
                 string path = samples[i];
@@ -448,6 +510,7 @@ namespace TuyaMCUAnalyzer
                 item2.Click += exampleClickListener;
                 examplesToolStripMenuItem.DropDownItems.Add(item2);
             }
+            setDualCaptureEnabled(false);
             refresh();
         }
         public void loadFileBinary(string fname)
@@ -463,7 +526,7 @@ namespace TuyaMCUAnalyzer
         }
         public void setData(string data)
         {
-            textBox1.Text = data;
+            richTextBoxSrc.Text = data;
             refresh();
         }
         public void loadFileText(string fname)
@@ -581,6 +644,124 @@ namespace TuyaMCUAnalyzer
             {
                 string fileName = openFileDialog.FileName;
                 loadFileText(fileName);
+            }
+        }
+
+        public void setDualCaptureEnabled(bool b)
+        {
+            comboBoxPortRX.Enabled = b;
+            comboBoxPortTX.Enabled = b;
+            comboBoxBaud.Enabled = b;
+            buttonOpenCloseRX.Enabled = b;
+            buttonOpenCloseTX.Enabled = b;
+            if (checkBoxRealtimeDual.Checked != b)
+            {
+                checkBoxRealtimeDual.Checked = b;
+            }
+            if(b)
+            {
+                portRX = new SinglePort(buttonOpenCloseRX, comboBoxPortRX, labelRXStats, addPacketRX, comboBoxBaud);         
+                portTX = new SinglePort(buttonOpenCloseTX, comboBoxPortTX, labelTXStats, addPacketTX, comboBoxBaud);
+            }
+        }
+        public void addPacket(byte [] data, string comment, string marker, Color c)
+        {
+            string s;
+            s = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                s += data[i].ToString("X2");
+            }
+            string final = "//"+marker+" " + DateTime.Now + " " + comment + Environment.NewLine
+                + s + Environment.NewLine;
+            RichTextBoxExtensions.AppendText(richTextBoxSrc, final, c);
+        }
+        public void addPacketRX(byte [] data)
+        {
+            addPacket(data, "WiFi received:", "R", Color.Blue);
+        }
+        public void addPacketTX(byte[] data)
+        {
+            addPacket(data, "WiFi sent:", "S", Color.Red);
+        }
+        private void checkBoxRealtimeDual_CheckedChanged(object sender, EventArgs e)
+        {
+            setDualCaptureEnabled(checkBoxRealtimeDual.Checked);
+        }
+
+        string[] allPorts;
+
+        void setPorts(string[] newPorts)
+        {
+            if (allPorts != null)
+            {
+                if (allPorts.Length == newPorts.Length)
+                {
+                    bool bChange = false;
+                    for (int i = 0; i < allPorts.Length; i++)
+                    {
+                        if (allPorts[i] != newPorts[i])
+                        {
+                            bChange = true;
+                            break;
+                        }
+                    }
+                    if (bChange == false)
+                    {
+                        return;
+                    }
+                }
+            }
+            allPorts = newPorts;
+            updateComboBox(comboBoxPortRX);
+            updateComboBox(comboBoxPortTX);
+        }
+        public void updateComboBox(ComboBox comboBoxUART) { 
+            string prevPort = "";
+            if (comboBoxUART.SelectedIndex != -1)
+            {
+                prevPort = comboBoxUART.SelectedItem.ToString();
+            }
+            comboBoxUART.Items.Clear();
+            int newIndex = allPorts.Length - 1;
+            for (int i = 0; i < allPorts.Length; i++)
+            {
+                if (prevPort == allPorts[i])
+                    newIndex = i;
+                comboBoxUART.Items.Add(allPorts[i]);
+            }
+            if (newIndex != -1)
+            {
+                comboBoxUART.SelectedIndex = newIndex;
+            }
+        }
+        void scanForCOMPorts()
+        {
+            string[] newPorts = SerialPort.GetPortNames();
+            setPorts(newPorts);
+        }
+
+        private void comboBoxBaud_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            richTextBoxSrc.Text = "";
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            scanForCOMPorts();
+           
+            if (portRX != null)
+            {
+                portRX.runFrame();
+            }
+            if (portTX != null)
+            {
+                portTX.runFrame();
             }
         }
     }
