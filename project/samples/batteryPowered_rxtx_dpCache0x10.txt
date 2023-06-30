@@ -1,0 +1,13 @@
+
+// MCU sends requests and WiFi replies with data (record storages)
+// Example below is an empty DP cache:
+//R 4/30/2023 6:18:06 PM WiFi received:
+55AA001000010010
+//S 4/30/2023 6:18:06 PM WiFi sent:
+55AA00100002010012
+
+// Here is a dp cache with two variables:
+//R 5/2/2023 2:10:43 PM WiFi received:
+55AA001000010010
+//S 5/2/2023 2:10:45 PM WiFi sent:
+55AA0010001201021102000400000001120200040000000155
