@@ -97,11 +97,17 @@ namespace TuyaMCUAnalyzer
                 case 3:
                     cmdName = "WifiState";
                     break;
+                case 6:
+                    cmdName = "SetDP";
+                    break;
                 case 7:
                     cmdName = "State";
                     break;
                 case 8:
                     cmdName = "QueryInitStatus";
+                    break;
+                case 0x10:
+                    cmdName = "ObtainDPcache";
                     break;
                 case 0x1C:
                     cmdName = "Date";
