@@ -1,6 +1,6 @@
 ﻿namespace TuyaMCUAnalyzer
 {
-    partial class Form1
+    partial class FormTuyaMCUAnalyzer
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTuyaMCUAnalyzer));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.listViewAvailableIDs = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -229,11 +229,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1155, 781);
+            this.tabControl1.Size = new System.Drawing.Size(1155, 784);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
@@ -250,7 +250,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1147, 755);
+            this.tabPage1.Size = new System.Drawing.Size(1147, 758);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Decode tool";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -400,7 +400,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1147, 755);
+            this.tabPage2.Size = new System.Drawing.Size(1147, 758);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Compare tool";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -418,7 +418,7 @@
             // richTextBoxComparer
             // 
             this.richTextBoxComparer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBoxComparer.Location = new System.Drawing.Point(3, 43);
+            this.richTextBoxComparer.Location = new System.Drawing.Point(3, 46);
             this.richTextBoxComparer.Name = "richTextBoxComparer";
             this.richTextBoxComparer.Size = new System.Drawing.Size(1141, 709);
             this.richTextBoxComparer.TabIndex = 0;
@@ -431,7 +431,7 @@
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form1
+            // FormTuyaMCUAnalyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -440,7 +440,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "FormTuyaMCUAnalyzer";
             this.Text = "TuyaMCU Explorer/Analyzer for OpenBeken - Elektroda.com ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);

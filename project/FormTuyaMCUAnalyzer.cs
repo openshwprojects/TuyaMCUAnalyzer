@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace TuyaMCUAnalyzer
 {
-    public partial class Form1 : Form
+    public partial class FormTuyaMCUAnalyzer : Form
     {
         IDsTracker tracker;
         SinglePort portRX, portTX;
 
-        public Form1()
+        public FormTuyaMCUAnalyzer()
         {
             InitializeComponent();
         }
@@ -497,25 +497,36 @@ namespace TuyaMCUAnalyzer
             long filelen = new FileInfo(fname).Length;
             return formatByteSize(filelen);
         }
+        void scanForExamplesCaptures()
+        {
+            try
+            {
+                string samplesDir = findSamplesPath();
+                string[] samples = Directory.GetFiles(samplesDir);
+                for (int i = 0; i < samples.Length; i++)
+                {
+                    string path = samples[i];
+                    path = path.Replace('/', '\\');
+                    string lenStr = formatByteSize(path);
+                    var item2 = new System.Windows.Forms.ToolStripMenuItem()
+                    {
+                        Name = "Test",
+                        Text = path + "    " + lenStr,
+                        Tag = path
+                    };
+                    item2.Click += exampleClickListener;
+                    examplesToolStripMenuItem.DropDownItems.Add(item2);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("No examples found? Get sample captures from Github!");
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBoxBaud.SelectedIndex = 0;
-            string samplesDir = findSamplesPath();
-            string [] samples =  Directory.GetFiles(samplesDir);
-            for(int i = 0; i < samples.Length; i++)
-            {
-                string path = samples[i];
-                path = path.Replace('/', '\\');
-                string lenStr = formatByteSize(path);
-                var item2 = new System.Windows.Forms.ToolStripMenuItem()
-                {
-                    Name = "Test",
-                    Text = path+"    "+ lenStr,
-                    Tag = path
-                };
-                item2.Click += exampleClickListener;
-                examplesToolStripMenuItem.DropDownItems.Add(item2);
-            }
+            scanForExamplesCaptures();
             setDualCaptureEnabled(false);
             refresh();
         }
