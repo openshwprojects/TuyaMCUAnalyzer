@@ -72,6 +72,7 @@
             this.checkBoxStrTypeAsBytes = new System.Windows.Forms.CheckBox();
             this.checkBoxHIdeHeartbeat = new System.Windows.Forms.CheckBox();
             this.checkBoxDecodeColors = new System.Windows.Forms.CheckBox();
+            this.checkBoxHideWiFiState = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -247,6 +248,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBoxHideWiFiState);
             this.tabPage1.Controls.Add(this.checkBoxDecodeColors);
             this.tabPage1.Controls.Add(this.checkBoxHIdeHeartbeat);
             this.tabPage1.Controls.Add(this.checkBoxStrTypeAsBytes);
@@ -463,9 +465,9 @@
             this.checkBoxHIdeHeartbeat.AutoSize = true;
             this.checkBoxHIdeHeartbeat.Location = new System.Drawing.Point(292, 122);
             this.checkBoxHIdeHeartbeat.Name = "checkBoxHIdeHeartbeat";
-            this.checkBoxHIdeHeartbeat.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxHIdeHeartbeat.Size = new System.Drawing.Size(96, 17);
             this.checkBoxHIdeHeartbeat.TabIndex = 13;
-            this.checkBoxHIdeHeartbeat.Text = "Hide heartbeat packets";
+            this.checkBoxHIdeHeartbeat.Text = "Hide heartbeat";
             this.checkBoxHIdeHeartbeat.UseVisualStyleBackColor = true;
             this.checkBoxHIdeHeartbeat.CheckedChanged += new System.EventHandler(this.checkBoxHIdeHeartbeat_CheckedChanged);
             // 
@@ -474,13 +476,24 @@
             this.checkBoxDecodeColors.AutoSize = true;
             this.checkBoxDecodeColors.Checked = true;
             this.checkBoxDecodeColors.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDecodeColors.Location = new System.Drawing.Point(436, 122);
+            this.checkBoxDecodeColors.Location = new System.Drawing.Point(498, 122);
             this.checkBoxDecodeColors.Name = "checkBoxDecodeColors";
             this.checkBoxDecodeColors.Size = new System.Drawing.Size(123, 17);
             this.checkBoxDecodeColors.TabIndex = 14;
             this.checkBoxDecodeColors.Text = "Decode Tuya Colors";
             this.checkBoxDecodeColors.UseVisualStyleBackColor = true;
             this.checkBoxDecodeColors.CheckedChanged += new System.EventHandler(this.checkBoxDecodeColors_CheckedChanged);
+            // 
+            // checkBoxHideWiFiState
+            // 
+            this.checkBoxHideWiFiState.AutoSize = true;
+            this.checkBoxHideWiFiState.Location = new System.Drawing.Point(394, 122);
+            this.checkBoxHideWiFiState.Name = "checkBoxHideWiFiState";
+            this.checkBoxHideWiFiState.Size = new System.Drawing.Size(98, 17);
+            this.checkBoxHideWiFiState.TabIndex = 15;
+            this.checkBoxHideWiFiState.Text = "Hide WiFi state";
+            this.checkBoxHideWiFiState.UseVisualStyleBackColor = true;
+            this.checkBoxHideWiFiState.CheckedChanged += new System.EventHandler(this.checkBoxHideWiFiState_CheckedChanged);
             // 
             // FormTuyaMCUAnalyzer
             // 
@@ -551,6 +564,7 @@
         private System.Windows.Forms.CheckBox checkBoxStrTypeAsBytes;
         private System.Windows.Forms.CheckBox checkBoxHIdeHeartbeat;
         private System.Windows.Forms.CheckBox checkBoxDecodeColors;
+        private System.Windows.Forms.CheckBox checkBoxHideWiFiState;
     }
 }
 

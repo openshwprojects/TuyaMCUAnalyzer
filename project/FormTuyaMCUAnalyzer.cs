@@ -440,6 +440,13 @@ namespace TuyaMCUAnalyzer
                         continue;
                     }
                 }
+                if (checkBoxHideWiFiState.Checked)
+                {
+                    if (packet[3] == 3)
+                    {
+                        continue;
+                    }
+                }
                 if (comment.Length > 0)
                 {
                     RichTextBoxExtensions.AppendText(richTextBox1, comment + Environment.NewLine, Color.Black);
@@ -807,6 +814,11 @@ namespace TuyaMCUAnalyzer
         }
 
         private void checkBoxDecodeColors_CheckedChanged(object sender, EventArgs e)
+        {
+            refresh();
+        }
+
+        private void checkBoxHideWiFiState_CheckedChanged(object sender, EventArgs e)
         {
             refresh();
         }
