@@ -121,7 +121,7 @@ namespace TuyaMCUAnalyzer
                     while (ofs + 4 < p.Count)
                     {
                         int sectorLen = p[ofs + 2] << 8 | p[ofs + 3];
-                        int fnId = p[ofs];
+                        int dpId = p[ofs];
                         RichTextBoxExtensions.AppendText(richTextBox1, p[ofs].ToString("X2") + " ",
                             Color.Black);
                         RichTextBoxExtensions.AppendText(richTextBox1, p[ofs + 1].ToString("X2") + " ",
@@ -185,12 +185,12 @@ namespace TuyaMCUAnalyzer
                 while (ofs + 4 < p.Count)
                 {
                     int sectorLen = p[ofs + 2] << 8 | p[ofs + 3];
-                    int fnId = p[ofs];
+                    int dpId = p[ofs];
                     TuyaType dataType = (TuyaType) p[ofs + 1];
 
                     if (contentString.Length > 0)
                         contentString += ",";
-                    contentString += "fnId=" + fnId;
+                    contentString += "dpId=" + dpId;
                     contentString += " ";
                     contentString += dataType.ToString();
                     contentString += " ";
@@ -198,13 +198,13 @@ namespace TuyaMCUAnalyzer
                     {
                         int iVal = (int)p[ofs + 4];
                         contentString += "V=" + iVal;
-                        tracker.addValueInt(fnId, dataType, iVal);
+                        tracker.addValueInt(dpId, dataType, iVal);
                     }
                     else if (sectorLen == 4)
                     {
                         int iVal = p[ofs + 4] << 24 | p[ofs + 5] << 16 | p[ofs + 6] << 8 | p[ofs + 7];
                         contentString += "V=" + iVal;
-                        tracker.addValueInt(fnId, dataType, iVal);
+                        tracker.addValueInt(dpId, dataType, iVal);
                     }
                     else
                     {
@@ -223,7 +223,7 @@ namespace TuyaMCUAnalyzer
                                 varStr += p[ofs + si + 4].ToString("X2");
                             }
                         }
-                        tracker.addValueStr(fnId, dataType, varStr.Replace(" ",""));
+                        tracker.addValueStr(dpId, dataType, varStr.Replace(" ",""));
                         contentString += "V=" + varStr;
                     }
                     ofs += (4 + sectorLen);
@@ -299,13 +299,13 @@ namespace TuyaMCUAnalyzer
                 // One or multiple combined “status data unit” groups
                 while (ofs + 4 < p.Count)
                 {
-                    int fnId = p[ofs];
+                    int dpId = p[ofs];
                     TuyaType dataType = (TuyaType)p[ofs + 1];
                     int sectorLen = p[ofs + 2] << 8 | p[ofs + 3];
 
                     if (contentString.Length > 0)
                         contentString += ",";
-                    contentString += "fnId=" + fnId;
+                    contentString += "dpId=" + dpId;
                     contentString += " ";
                     contentString += dataType.ToString();
                     contentString += " ";
@@ -419,11 +419,11 @@ namespace TuyaMCUAnalyzer
                     }
                     while (i < text.Length)
                     {
-                        i++;
-                        if(text[i] == '\n')
+                        if (text[i] == '\n')
                         {
                             break;
                         }
+                        i++;
                     }
                     continue;
                 }
