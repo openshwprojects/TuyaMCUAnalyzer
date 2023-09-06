@@ -71,6 +71,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.checkBoxStrTypeAsBytes = new System.Windows.Forms.CheckBox();
             this.checkBoxHIdeHeartbeat = new System.Windows.Forms.CheckBox();
+            this.checkBoxDecodeColors = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -80,14 +81,19 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(3, 176);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(801, 493);
+            this.richTextBox1.Size = new System.Drawing.Size(801, 574);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
             // listViewAvailableIDs
             // 
+            this.listViewAvailableIDs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewAvailableIDs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.id,
             this.type,
@@ -220,6 +226,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(816, 176);
             this.label4.Name = "label4";
@@ -240,6 +247,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBoxDecodeColors);
             this.tabPage1.Controls.Add(this.checkBoxHIdeHeartbeat);
             this.tabPage1.Controls.Add(this.checkBoxStrTypeAsBytes);
             this.tabPage1.Controls.Add(this.buttonClear);
@@ -271,6 +279,8 @@
             // 
             // richTextBoxSrc
             // 
+            this.richTextBoxSrc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxSrc.Location = new System.Drawing.Point(6, 17);
             this.richTextBoxSrc.Name = "richTextBoxSrc";
             this.richTextBoxSrc.Size = new System.Drawing.Size(801, 99);
@@ -280,6 +290,7 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.labelTXStats);
             this.panel1.Controls.Add(this.labelRXStats);
             this.panel1.Controls.Add(this.buttonOpenCloseTX);
@@ -388,6 +399,7 @@
             // 
             // checkBoxRealtimeDual
             // 
+            this.checkBoxRealtimeDual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxRealtimeDual.AutoSize = true;
             this.checkBoxRealtimeDual.Location = new System.Drawing.Point(819, 19);
             this.checkBoxRealtimeDual.Name = "checkBoxRealtimeDual";
@@ -457,6 +469,17 @@
             this.checkBoxHIdeHeartbeat.UseVisualStyleBackColor = true;
             this.checkBoxHIdeHeartbeat.CheckedChanged += new System.EventHandler(this.checkBoxHIdeHeartbeat_CheckedChanged);
             // 
+            // checkBoxDecodeColors
+            // 
+            this.checkBoxDecodeColors.AutoSize = true;
+            this.checkBoxDecodeColors.Location = new System.Drawing.Point(436, 122);
+            this.checkBoxDecodeColors.Name = "checkBoxDecodeColors";
+            this.checkBoxDecodeColors.Size = new System.Drawing.Size(123, 17);
+            this.checkBoxDecodeColors.TabIndex = 14;
+            this.checkBoxDecodeColors.Text = "Decode Tuya Colors";
+            this.checkBoxDecodeColors.UseVisualStyleBackColor = true;
+            this.checkBoxDecodeColors.CheckedChanged += new System.EventHandler(this.checkBoxDecodeColors_CheckedChanged);
+            // 
             // FormTuyaMCUAnalyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,6 +548,7 @@
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.CheckBox checkBoxStrTypeAsBytes;
         private System.Windows.Forms.CheckBox checkBoxHIdeHeartbeat;
+        private System.Windows.Forms.CheckBox checkBoxDecodeColors;
     }
 }
 

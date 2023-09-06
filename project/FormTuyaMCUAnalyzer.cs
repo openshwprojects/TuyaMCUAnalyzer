@@ -180,6 +180,8 @@ namespace TuyaMCUAnalyzer
              s = "";
             if (cmd == 7)
             {
+                bool bHadColor = false;
+                Color col = Color.Black;
                 string contentString = "";
                 int ofs = 6;
                 while (ofs + 4 < p.Count)
@@ -209,9 +211,11 @@ namespace TuyaMCUAnalyzer
                     else
                     {
                         string varStr = "";
+                        string strDataForColor = "";
                         for(int si = 0; si < sectorLen; si++)
                         {
-                            if(dataType == TuyaType.Str && checkBoxStrTypeAsBytes.Checked == false)
+                            strDataForColor += Convert.ToChar(p[ofs + si + 4]);
+                            if (dataType == TuyaType.Str && checkBoxStrTypeAsBytes.Checked == false)
                             {
                                 // ascii string
                                 varStr += Convert.ToChar(p[ofs + si + 4]);
@@ -225,11 +229,21 @@ namespace TuyaMCUAnalyzer
                         }
                         tracker.addValueStr(dpId, dataType, varStr.Replace(" ",""));
                         contentString += "V=" + varStr;
+                        if (checkBoxDecodeColors.Checked && parseTuyaColor(strDataForColor, out col))
+                        {
+                            bHadColor = true;
+                        }
                     }
                     ofs += (4 + sectorLen);
                 }
-                RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Orange);
-              //  RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
+                RichTextBoxExtensions.AppendText(richTextBox1, contentString , Color.Orange);
+                if (bHadColor)
+                {
+                    bHadColor = true;
+                    RichTextBoxExtensions.AppendText(richTextBox1, " Col: ■", col);
+                }
+                RichTextBoxExtensions.AppendText(richTextBox1, "\t", Color.Orange);
+                //  RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
             }
             else if (cmd == 1)
             {
@@ -538,6 +552,48 @@ namespace TuyaMCUAnalyzer
                 MessageBox.Show("No examples found? Get sample captures from Github!");
             }
         }
+        bool parseTuyaColor(string s, out Color c)
+        {
+            if (s.Length == 12)
+            {
+                string[] substrings = new string[3];
+                for (int i = 0; i < 3; i++)
+                {
+                    substrings[i] = s.Substring(i * 4, 4);
+                }
+                int hue = int.Parse(substrings[0], System.Globalization.NumberStyles.HexNumber);
+                int sat1000 = int.Parse(substrings[1], System.Globalization.NumberStyles.HexNumber);
+                int val1000 = int.Parse(substrings[2], System.Globalization.NumberStyles.HexNumber);
+                c = HsvToRgb(hue, sat1000*0.001, val1000 * 0.001);
+                return true;
+            }
+            c = Color.Black;
+            return false;
+        }
+        public static Color HsvToRgb(double hue, double saturation, double value)
+        {
+            int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;
+            double f = hue / 60 - Math.Floor(hue / 60);
+
+            value = value * 255;
+            int v = Convert.ToInt32(value);
+            int p = Convert.ToInt32(value * (1 - saturation));
+            int q = Convert.ToInt32(value * (1 - f * saturation));
+            int t = Convert.ToInt32(value * (1 - (1 - f) * saturation));
+
+            if (hi == 0)
+                return Color.FromArgb(255, v, t, p);
+            else if (hi == 1)
+                return Color.FromArgb(255, q, v, p);
+            else if (hi == 2)
+                return Color.FromArgb(255, p, v, t);
+            else if (hi == 3)
+                return Color.FromArgb(255, p, q, v);
+            else if (hi == 4)
+                return Color.FromArgb(255, t, p, v);
+            else
+                return Color.FromArgb(255, v, p, q);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBoxBaud.SelectedIndex = 0;
@@ -789,6 +845,11 @@ namespace TuyaMCUAnalyzer
         }
 
         private void checkBoxHIdeHeartbeat_CheckedChanged(object sender, EventArgs e)
+        {
+            refresh();
+        }
+
+        private void checkBoxDecodeColors_CheckedChanged(object sender, EventArgs e)
         {
             refresh();
         }
