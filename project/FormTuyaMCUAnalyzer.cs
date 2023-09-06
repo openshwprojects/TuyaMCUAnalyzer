@@ -71,6 +71,73 @@ namespace TuyaMCUAnalyzer
             p.Clear();
             return null;
         }
+        void parseDPData(List<byte> p, int ofs = 6)
+        {
+            bool bHadColor = false;
+            Color col = Color.Black;
+            string contentString = "";
+            while (ofs + 4 < p.Count)
+            {
+                int sectorLen = p[ofs + 2] << 8 | p[ofs + 3];
+                int dpId = p[ofs];
+                TuyaType dataType = (TuyaType)p[ofs + 1];
+
+                if (contentString.Length > 0)
+                    contentString += ",";
+                contentString += "dpId=" + dpId;
+                contentString += " ";
+                contentString += dataType.ToString();
+                contentString += " ";
+                if (sectorLen == 1)
+                {
+                    int iVal = (int)p[ofs + 4];
+                    contentString += "V=" + iVal;
+                    tracker.addValueInt(dpId, dataType, iVal);
+                }
+                else if (sectorLen == 4)
+                {
+                    int iVal = p[ofs + 4] << 24 | p[ofs + 5] << 16 | p[ofs + 6] << 8 | p[ofs + 7];
+                    contentString += "V=" + iVal;
+                    tracker.addValueInt(dpId, dataType, iVal);
+                }
+                else
+                {
+                    string varStr = "";
+                    string strDataForColor = "";
+                    for (int si = 0; si < sectorLen; si++)
+                    {
+                        strDataForColor += Convert.ToChar(p[ofs + si + 4]);
+                        if (dataType == TuyaType.Str && checkBoxStrTypeAsBytes.Checked == false)
+                        {
+                            // ascii string
+                            varStr += Convert.ToChar(p[ofs + si + 4]);
+                        }
+                        else
+                        {
+                            if (si != 0)
+                                varStr += " ";
+                            varStr += p[ofs + si + 4].ToString("X2");
+                        }
+                    }
+                    tracker.addValueStr(dpId, dataType, varStr.Replace(" ", ""));
+                    contentString += "V=" + varStr;
+                    if (checkBoxDecodeColors.Checked && parseTuyaColor(strDataForColor, out col))
+                    {
+                        bHadColor = true;
+                    }
+                }
+                ofs += (4 + sectorLen);
+            }
+            RichTextBoxExtensions.AppendText(richTextBox1, contentString, Color.Orange);
+            if (bHadColor)
+            {
+                bHadColor = true;
+                RichTextBoxExtensions.AppendText(richTextBox1, " Col: ■", col);
+            }
+            RichTextBoxExtensions.AppendText(richTextBox1, "\t", Color.Orange);
+            //  RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
+
+        }
         void displayPacket(List<byte> p)
         {
             byte ver = p[2];
@@ -180,70 +247,7 @@ namespace TuyaMCUAnalyzer
              s = "";
             if (cmd == 7)
             {
-                bool bHadColor = false;
-                Color col = Color.Black;
-                string contentString = "";
-                int ofs = 6;
-                while (ofs + 4 < p.Count)
-                {
-                    int sectorLen = p[ofs + 2] << 8 | p[ofs + 3];
-                    int dpId = p[ofs];
-                    TuyaType dataType = (TuyaType) p[ofs + 1];
-
-                    if (contentString.Length > 0)
-                        contentString += ",";
-                    contentString += "dpId=" + dpId;
-                    contentString += " ";
-                    contentString += dataType.ToString();
-                    contentString += " ";
-                    if (sectorLen == 1)
-                    {
-                        int iVal = (int)p[ofs + 4];
-                        contentString += "V=" + iVal;
-                        tracker.addValueInt(dpId, dataType, iVal);
-                    }
-                    else if (sectorLen == 4)
-                    {
-                        int iVal = p[ofs + 4] << 24 | p[ofs + 5] << 16 | p[ofs + 6] << 8 | p[ofs + 7];
-                        contentString += "V=" + iVal;
-                        tracker.addValueInt(dpId, dataType, iVal);
-                    }
-                    else
-                    {
-                        string varStr = "";
-                        string strDataForColor = "";
-                        for(int si = 0; si < sectorLen; si++)
-                        {
-                            strDataForColor += Convert.ToChar(p[ofs + si + 4]);
-                            if (dataType == TuyaType.Str && checkBoxStrTypeAsBytes.Checked == false)
-                            {
-                                // ascii string
-                                varStr += Convert.ToChar(p[ofs + si + 4]);
-                            }
-                            else
-                            {
-                                if (si != 0)
-                                    varStr += " ";
-                                varStr += p[ofs + si + 4].ToString("X2");
-                            }
-                        }
-                        tracker.addValueStr(dpId, dataType, varStr.Replace(" ",""));
-                        contentString += "V=" + varStr;
-                        if (checkBoxDecodeColors.Checked && parseTuyaColor(strDataForColor, out col))
-                        {
-                            bHadColor = true;
-                        }
-                    }
-                    ofs += (4 + sectorLen);
-                }
-                RichTextBoxExtensions.AppendText(richTextBox1, contentString , Color.Orange);
-                if (bHadColor)
-                {
-                    bHadColor = true;
-                    RichTextBoxExtensions.AppendText(richTextBox1, " Col: ■", col);
-                }
-                RichTextBoxExtensions.AppendText(richTextBox1, "\t", Color.Orange);
-                //  RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
+                parseDPData(p);
             }
             else if (cmd == 1)
             {
@@ -309,54 +313,7 @@ namespace TuyaMCUAnalyzer
                     }
                     ofs += 7;
                 }
-
-                // One or multiple combined “status data unit” groups
-                while (ofs + 4 < p.Count)
-                {
-                    int dpId = p[ofs];
-                    TuyaType dataType = (TuyaType)p[ofs + 1];
-                    int sectorLen = p[ofs + 2] << 8 | p[ofs + 3];
-
-                    if (contentString.Length > 0)
-                        contentString += ",";
-                    contentString += "dpId=" + dpId;
-                    contentString += " ";
-                    contentString += dataType.ToString();
-                    contentString += " ";
-
-                
-                    if (sectorLen == 1)
-                    {
-                        int iVal = (int)p[ofs + 4];
-                        contentString += "V=" + iVal;
-                    }
-                    else if (sectorLen == 4)
-                    {
-                        int iVal = p[ofs + 4] << 24 | p[ofs + 5] << 16 | p[ofs + 6] << 8 | p[ofs + 7];
-                        contentString += "V=" + iVal;
-                    }
-                    else
-                    {
-                        string varStr = "";
-                        for (int si = 0; si < sectorLen; si++)
-                        {
-                            if (dataType == TuyaType.Str && checkBoxStrTypeAsBytes.Checked == false)
-                            {
-                                // ascii string
-                                varStr += Convert.ToChar(p[ofs + si + 4]);
-                            }
-                            else
-                            {
-                                if (si != 0)
-                                    varStr += " ";
-                                varStr += p[ofs + si + 4].ToString("X2");
-                            }
-                        }
-                        tracker.addValueStr(dpId, dataType, varStr.Replace(" ", ""));
-                        contentString += "V=" + varStr;
-                    }
-                    ofs += (4 + sectorLen);
-                }
+                parseDPData(p, ofs);
                 RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Orange);
                 //  RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
                 

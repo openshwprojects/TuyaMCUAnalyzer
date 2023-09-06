@@ -472,6 +472,8 @@
             // checkBoxDecodeColors
             // 
             this.checkBoxDecodeColors.AutoSize = true;
+            this.checkBoxDecodeColors.Checked = true;
+            this.checkBoxDecodeColors.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxDecodeColors.Location = new System.Drawing.Point(436, 122);
             this.checkBoxDecodeColors.Name = "checkBoxDecodeColors";
             this.checkBoxDecodeColors.Size = new System.Drawing.Size(123, 17);
