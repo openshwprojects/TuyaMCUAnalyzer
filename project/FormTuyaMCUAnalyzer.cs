@@ -457,15 +457,21 @@ namespace TuyaMCUAnalyzer
             while(true)
             {
                 string comment = getSpecialMarker(ref r);
-                if(comment.Length>0)
-                {
-                    RichTextBoxExtensions.AppendText(richTextBox1, comment+Environment.NewLine, Color.Black);
-                    continue;
-                }
                 packet = getNextPacket(ref r);
                 if(packet == null)
                 {
                     break;
+                }
+                if (checkBoxHIdeHeartbeat.Checked)
+                {
+                    if (packet[3] == 0)
+                    {
+                        continue;
+                    }
+                }
+                if (comment.Length > 0)
+                {
+                    RichTextBoxExtensions.AppendText(richTextBox1, comment + Environment.NewLine, Color.Black);
                 }
                 displayPacket(packet);
             }
@@ -778,6 +784,11 @@ namespace TuyaMCUAnalyzer
         }
 
         private void checkBoxStrTypeAsBytes_CheckedChanged(object sender, EventArgs e)
+        {
+            refresh();
+        }
+
+        private void checkBoxHIdeHeartbeat_CheckedChanged(object sender, EventArgs e)
         {
             refresh();
         }
