@@ -211,7 +211,7 @@ namespace TuyaMCUAnalyzer
                         string varStr = "";
                         for(int si = 0; si < sectorLen; si++)
                         {
-                            if(dataType == TuyaType.Str)
+                            if(dataType == TuyaType.Str && checkBoxStrTypeAsBytes.Checked == false)
                             {
                                 // ascii string
                                 varStr += Convert.ToChar(p[ofs + si + 4]);
@@ -326,10 +326,19 @@ namespace TuyaMCUAnalyzer
                         string varStr = "";
                         for (int si = 0; si < sectorLen; si++)
                         {
-                            if (si != 0)
-                                varStr += " ";
-                            varStr += p[ofs + si + 4].ToString("X2");
+                            if (dataType == TuyaType.Str && checkBoxStrTypeAsBytes.Checked == false)
+                            {
+                                // ascii string
+                                varStr += Convert.ToChar(p[ofs + si + 4]);
+                            }
+                            else
+                            {
+                                if (si != 0)
+                                    varStr += " ";
+                                varStr += p[ofs + si + 4].ToString("X2");
+                            }
                         }
+                        tracker.addValueStr(dpId, dataType, varStr.Replace(" ", ""));
                         contentString += "V=" + varStr;
                     }
                     ofs += (4 + sectorLen);
@@ -766,6 +775,11 @@ namespace TuyaMCUAnalyzer
         private void buttonClear_Click(object sender, EventArgs e)
         {
             richTextBoxSrc.Text = "";
+        }
+
+        private void checkBoxStrTypeAsBytes_CheckedChanged(object sender, EventArgs e)
+        {
+            refresh();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

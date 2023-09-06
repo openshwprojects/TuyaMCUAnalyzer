@@ -69,6 +69,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.richTextBoxComparer = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkBoxStrTypeAsBytes = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -78,9 +79,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(3, 163);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 176);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(801, 506);
+            this.richTextBox1.Size = new System.Drawing.Size(801, 493);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -210,7 +211,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 145);
+            this.label3.Location = new System.Drawing.Point(3, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(390, 13);
             this.label3.TabIndex = 6;
@@ -238,6 +239,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBoxStrTypeAsBytes);
             this.tabPage1.Controls.Add(this.buttonClear);
             this.tabPage1.Controls.Add(this.richTextBoxSrc);
             this.tabPage1.Controls.Add(this.panel1);
@@ -431,6 +433,17 @@
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // checkBoxStrTypeAsBytes
+            // 
+            this.checkBoxStrTypeAsBytes.AutoSize = true;
+            this.checkBoxStrTypeAsBytes.Location = new System.Drawing.Point(8, 122);
+            this.checkBoxStrTypeAsBytes.Name = "checkBoxStrTypeAsBytes";
+            this.checkBoxStrTypeAsBytes.Size = new System.Drawing.Size(277, 17);
+            this.checkBoxStrTypeAsBytes.TabIndex = 12;
+            this.checkBoxStrTypeAsBytes.Text = "Display STR type as hex bytes instead of ASCII string";
+            this.checkBoxStrTypeAsBytes.UseVisualStyleBackColor = true;
+            this.checkBoxStrTypeAsBytes.CheckedChanged += new System.EventHandler(this.checkBoxStrTypeAsBytes_CheckedChanged);
+            // 
             // FormTuyaMCUAnalyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +510,7 @@
         private System.Windows.Forms.Label labelRXStats;
         private System.Windows.Forms.RichTextBox richTextBoxSrc;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.CheckBox checkBoxStrTypeAsBytes;
     }
 }
 
