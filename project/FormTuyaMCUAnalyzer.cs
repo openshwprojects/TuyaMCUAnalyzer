@@ -128,13 +128,13 @@ namespace TuyaMCUAnalyzer
                 }
                 ofs += (4 + sectorLen);
             }
-            RichTextBoxExtensions.AppendText(richTextBox1, contentString, Color.Orange);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, contentString, Color.Orange);
             if (bHadColor)
             {
                 bHadColor = true;
-                RichTextBoxExtensions.AppendText(richTextBox1, " Col: ■", col);
+                RichTextBoxExtensions.AppendText(richTextBoxDecodedd, " Col: ■", col);
             }
-            RichTextBoxExtensions.AppendText(richTextBox1, "\t", Color.Orange);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "\t", Color.Orange);
             //  RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
 
         }
@@ -144,10 +144,10 @@ namespace TuyaMCUAnalyzer
             byte cmd = p[3];
             byte lenA = p[4];
             byte lenB = p[5];
-            RichTextBoxExtensions.AppendText(richTextBox1, p[0].ToString("X2") + " "+p[1].ToString("X2") + "\t", Color.Black);
-            RichTextBoxExtensions.AppendText(richTextBox1, p[2].ToString("X2") + "\t", Color.Magenta);
-            RichTextBoxExtensions.AppendText(richTextBox1, p[3].ToString("X2") + "\t\t", Color.Red);
-            RichTextBoxExtensions.AppendText(richTextBox1, p[4].ToString("X2") + " " + p[5].ToString("X2") + "\t", Color.Green);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, p[0].ToString("X2") + " "+p[1].ToString("X2") + "\t", Color.Black);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, p[2].ToString("X2") + "\t", Color.Magenta);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, p[3].ToString("X2") + "\t\t", Color.Red);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, p[4].ToString("X2") + " " + p[5].ToString("X2") + "\t", Color.Green);
             string cmdName = "Unk";
             // https://images.tuyacn.com/smart/aircondition/Guide-to-Interworking-with-the-Tuya-MCU.pdf
             switch (cmd)
@@ -189,25 +189,25 @@ namespace TuyaMCUAnalyzer
                     {
                         int sectorLen = p[ofs + 2] << 8 | p[ofs + 3];
                         int dpId = p[ofs];
-                        RichTextBoxExtensions.AppendText(richTextBox1, p[ofs].ToString("X2") + " ",
+                        RichTextBoxExtensions.AppendText(richTextBoxDecodedd, p[ofs].ToString("X2") + " ",
                             Color.Black);
-                        RichTextBoxExtensions.AppendText(richTextBox1, p[ofs + 1].ToString("X2") + " ",
+                        RichTextBoxExtensions.AppendText(richTextBoxDecodedd, p[ofs + 1].ToString("X2") + " ",
                             Color.Green);
-                        RichTextBoxExtensions.AppendText(richTextBox1, p[ofs + 2].ToString("X2") + " " + p[ofs + 3].ToString("X2") + " ",
+                        RichTextBoxExtensions.AppendText(richTextBoxDecodedd, p[ofs + 2].ToString("X2") + " " + p[ofs + 3].ToString("X2") + " ",
                             Color.Black);
                         int dataType = p[ofs + 1];
                         
                         if (sectorLen == 1)
                         {
                             int iVal = (int)p[ofs + 4];
-                            RichTextBoxExtensions.AppendText(richTextBox1, iVal.ToString("X2") + " ",
+                            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, iVal.ToString("X2") + " ",
                                 Color.Orange);
 
                         }
                         else if (sectorLen == 4)
                         {
                             int iVal = p[ofs + 4] << 24 | p[ofs + 5] << 16 | p[ofs + 6] << 8 | p[ofs + 7];
-                            RichTextBoxExtensions.AppendText(richTextBox1, iVal.ToString("X8") + " ",
+                            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, iVal.ToString("X8") + " ",
                                 Color.Orange);
                         }
                         else
@@ -219,13 +219,13 @@ namespace TuyaMCUAnalyzer
                                     varStr += "";
                                 varStr += p[ofs + si + 4].ToString("X2");
                             }
-                            RichTextBoxExtensions.AppendText(richTextBox1, varStr + " ",
+                            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, varStr + " ",
                                 Color.Orange);
                         }
                         ofs += (4 + sectorLen);
                     }
-                    RichTextBoxExtensions.AppendText(richTextBox1, s + "\t", Color.Gray);
-                    RichTextBoxExtensions.AppendText(richTextBox1, s + "\t", Color.Gray);
+                    RichTextBoxExtensions.AppendText(richTextBoxDecodedd, s + "\t", Color.Gray);
+                    RichTextBoxExtensions.AppendText(richTextBoxDecodedd, s + "\t", Color.Gray);
                     break;
                 default:
                     for (int i = 6; i < p.Count - 1; i++)
@@ -233,17 +233,17 @@ namespace TuyaMCUAnalyzer
                         s += p[i].ToString("X2");
                         s += "";
                     }
-                    RichTextBoxExtensions.AppendText(richTextBox1, s + "\t", Color.Gray);
+                    RichTextBoxExtensions.AppendText(richTextBoxDecodedd, s + "\t", Color.Gray);
                  //   RichTextBoxExtensions.AppendText(richTextBox1, s + "\t", Color.Gray);
                     break;
             }
-            RichTextBoxExtensions.AppendText(richTextBox1, p[p.Count-1].ToString("X2") + "\t", Color.Black);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, p[p.Count-1].ToString("X2") + "\t", Color.Black);
 
-            RichTextBoxExtensions.AppendText(richTextBox1, Environment.NewLine);
-            RichTextBoxExtensions.AppendText(richTextBox1, "HEADER" + "\t", Color.Black);
-            RichTextBoxExtensions.AppendText(richTextBox1, "VER=" + p[2].ToString("X2") + "\t", Color.Magenta);
-            RichTextBoxExtensions.AppendText(richTextBox1, cmdName + "\t\t", Color.Red);
-            RichTextBoxExtensions.AppendText(richTextBox1, "LEN" + "\t", Color.Green);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, Environment.NewLine);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "HEADER" + "\t", Color.Black);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "VER=" + p[2].ToString("X2") + "\t", Color.Magenta);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, cmdName + "\t\t", Color.Red);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "LEN" + "\t", Color.Green);
              s = "";
             if (cmd == 7)
             {
@@ -252,7 +252,7 @@ namespace TuyaMCUAnalyzer
             else if (cmd == 1)
             {
                 string str = ASCIIEncoding.ASCII.GetString(p.ToArray(), 6, p.Count - 7);
-                RichTextBoxExtensions.AppendText(richTextBox1, str + "\t", Color.Gray);
+                RichTextBoxExtensions.AppendText(richTextBoxDecodedd, str + "\t", Color.Gray);
             }
             else if((cmd == 0x1C && ver == 0))
             {
@@ -268,13 +268,13 @@ namespace TuyaMCUAnalyzer
                     // NOTE: some packets don't have second here?
                     int second = p[baseOfs + 6]; //  second
 
-                    RichTextBoxExtensions.AppendText(richTextBox1, "bOk=" + bDateValid +
+                    RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "bOk=" + bDateValid +
                         " " + year + "/" + month + "/" + day + " " +
                         hour + ":" + minute + ":" + second + "\t", Color.Gray);
                 }
                 else
                 {
-                    RichTextBoxExtensions.AppendText(richTextBox1, "INVALID date\t", Color.Gray);
+                    RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "INVALID date\t", Color.Gray);
                 }
             }
             else if ((cmd == 5 && ver == 0) || (cmd == 0x10 && ver == 0) 
@@ -303,23 +303,51 @@ namespace TuyaMCUAnalyzer
                                                      // NOTE: some packets don't have second here?
                         int second = p[ofs + 6]; //  second
 
-                        RichTextBoxExtensions.AppendText(richTextBox1, "bOk=" + bDateValid +
+                        RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "bOk=" + bDateValid +
                             " " + year + "/" + month + "/" + day + " " +
                             hour + ":" + minute + ":" + second + "\t", Color.Gray);
                     }
                     else
                     {
-                        RichTextBoxExtensions.AppendText(richTextBox1, "INVALID date\t", Color.Gray);
+                        RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "INVALID date\t", Color.Gray);
                     }
                     ofs += 7;
                 }
-                parseDPData(p, ofs);
-                RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Orange);
+                try
+                {
+                    parseDPData(p, ofs);
+                }
+                catch(Exception ex)
+                {
+                    int baseOfs = 6;
+                    int bDateValid = p[baseOfs + 0]; // bDateValid
+                    if (bDateValid == 1)
+                    {
+                        int year = p[baseOfs + 1]; //  year
+                        int month = p[baseOfs + 2]; //  month
+                        int day = p[baseOfs + 3]; //  day
+                        int hour = p[baseOfs + 4]; //  hour
+                        int minute = p[baseOfs + 5]; //  minute
+                                                     // NOTE: some packets don't have second here?
+                        int second = p[baseOfs + 6]; //  second
+
+                        RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "bOk=" + bDateValid +
+                            " " + year + "/" + month + "/" + day + " " +
+                            hour + ":" + minute + ":" + second + "\t", Color.Gray);
+                    }
+                    else
+                    {
+                        RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "INVALID date\t", Color.Gray);
+                    }
+                    parseDPData(p, ofs+7);
+                }
+                RichTextBoxExtensions.AppendText(richTextBoxDecodedd, contentString + "\t", Color.Orange);
                 //  RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
                 
             }
             else if(cmd == 6 && ver == 0)
             {
+                dateMode:
                 int baseOfs = 6;
                 int bDateValid = p[baseOfs+0]; // bDateValid
                 if (bDateValid == 1)
@@ -332,13 +360,13 @@ namespace TuyaMCUAnalyzer
                     // NOTE: some packets don't have second here?
                     int second = p[baseOfs + 6]; //  second
 
-                    RichTextBoxExtensions.AppendText(richTextBox1, "bOk=" + bDateValid +
+                    RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "bOk=" + bDateValid +
                         " " + year + "/" + month + "/" + day + " " +
                         hour + ":" + minute + ":" + second + "\t", Color.Gray);
                 }
                 else
                 {
-                    RichTextBoxExtensions.AppendText(richTextBox1, "INVALID date\t", Color.Gray);
+                    RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "INVALID date\t", Color.Gray);
                 }
             
             }
@@ -349,18 +377,18 @@ namespace TuyaMCUAnalyzer
                     s += p[i].ToString("X2");
                     s += "";
                 }
-                RichTextBoxExtensions.AppendText(richTextBox1, s + "\t", Color.Gray);
+                RichTextBoxExtensions.AppendText(richTextBoxDecodedd, s + "\t", Color.Gray);
                // RichTextBoxExtensions.AppendText(richTextBox1, s + "\t", Color.Gray);
             }
-            RichTextBoxExtensions.AppendText(richTextBox1, "CHK" + "\t", Color.Black);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "CHK" + "\t", Color.Black);
             switch (cmd)
             {
                 case 0:
 
                     break;
             }
-            RichTextBoxExtensions.AppendText(richTextBox1, Environment.NewLine);
-            RichTextBoxExtensions.AppendText(richTextBox1, Environment.NewLine);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, Environment.NewLine);
+            RichTextBoxExtensions.AppendText(richTextBoxDecodedd, Environment.NewLine);
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -371,7 +399,7 @@ namespace TuyaMCUAnalyzer
         int specialMarkerCount = 10;
         void refresh() {
             tracker = new IDsTracker();
-            richTextBox1.Clear();
+            richTextBoxDecodedd.Clear();
             string text = richTextBoxSrc.Text;
             List<byte> r = new List<byte>();
             string ch;
@@ -449,7 +477,7 @@ namespace TuyaMCUAnalyzer
                 }
                 if (comment.Length > 0)
                 {
-                    RichTextBoxExtensions.AppendText(richTextBox1, comment + Environment.NewLine, Color.Black);
+                    RichTextBoxExtensions.AppendText(richTextBoxDecodedd, comment + Environment.NewLine, Color.Black);
                 }
                 displayPacket(packet);
             }
@@ -706,6 +734,7 @@ namespace TuyaMCUAnalyzer
             comboBoxBaud.Enabled = b;
             buttonOpenCloseRX.Enabled = b;
             buttonOpenCloseTX.Enabled = b;
+            checkBoxPauseUART.Enabled = b;
             if (checkBoxRealtimeDual.Checked != b)
             {
                 checkBoxRealtimeDual.Checked = b;
@@ -718,6 +747,11 @@ namespace TuyaMCUAnalyzer
         }
         public void addPacket(byte [] data, string comment, string marker, Color c)
         {
+            if (checkBoxPauseUART.Checked)
+            {
+                // ignore
+                return;
+            }
             string s;
             s = "";
             for (int i = 0; i < data.Length; i++)
@@ -728,10 +762,12 @@ namespace TuyaMCUAnalyzer
                 + s + Environment.NewLine;
             RichTextBoxExtensions.AppendText(richTextBoxSrc, final, c);
         }
+        // called from SinglePort
         public void addPacketRX(byte [] data)
         {
             addPacket(data, "WiFi received:", "R", Color.Blue);
         }
+        // called from SinglePort
         public void addPacketTX(byte[] data)
         {
             addPacket(data, "WiFi sent:", "S", Color.Red);
@@ -821,6 +857,16 @@ namespace TuyaMCUAnalyzer
         private void checkBoxHideWiFiState_CheckedChanged(object sender, EventArgs e)
         {
             refresh();
+        }
+
+        private void buttonCopyDecodedToClipboard_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(richTextBoxDecodedd.Text);
+        }
+
+        private void buttonCopyRawToClipboard_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(richTextBoxSrc.Text);
         }
 
         private void timer1_Tick(object sender, EventArgs e)

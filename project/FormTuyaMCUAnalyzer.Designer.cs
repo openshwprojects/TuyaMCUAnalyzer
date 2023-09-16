@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTuyaMCUAnalyzer));
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxDecodedd = new System.Windows.Forms.RichTextBox();
             this.listViewAvailableIDs = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,6 +51,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBoxHideWiFiState = new System.Windows.Forms.CheckBox();
+            this.checkBoxDecodeColors = new System.Windows.Forms.CheckBox();
+            this.checkBoxHIdeHeartbeat = new System.Windows.Forms.CheckBox();
+            this.checkBoxStrTypeAsBytes = new System.Windows.Forms.CheckBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.richTextBoxSrc = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,10 +73,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.richTextBoxComparer = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.checkBoxStrTypeAsBytes = new System.Windows.Forms.CheckBox();
-            this.checkBoxHIdeHeartbeat = new System.Windows.Forms.CheckBox();
-            this.checkBoxDecodeColors = new System.Windows.Forms.CheckBox();
-            this.checkBoxHideWiFiState = new System.Windows.Forms.CheckBox();
+            this.checkBoxPauseUART = new System.Windows.Forms.CheckBox();
+            this.buttonCopyDecodedToClipboard = new System.Windows.Forms.Button();
+            this.buttonCopyRawToClipboard = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -80,16 +83,16 @@
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // richTextBoxDecodedd
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.richTextBoxDecodedd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(3, 176);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(801, 574);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.richTextBoxDecodedd.Location = new System.Drawing.Point(3, 176);
+            this.richTextBoxDecodedd.Name = "richTextBoxDecodedd";
+            this.richTextBoxDecodedd.Size = new System.Drawing.Size(801, 574);
+            this.richTextBoxDecodedd.TabIndex = 1;
+            this.richTextBoxDecodedd.Text = "";
             // 
             // listViewAvailableIDs
             // 
@@ -101,9 +104,9 @@
             this.columnHeader1,
             this.columnHeader2});
             this.listViewAvailableIDs.HideSelection = false;
-            this.listViewAvailableIDs.Location = new System.Drawing.Point(814, 257);
+            this.listViewAvailableIDs.Location = new System.Drawing.Point(814, 296);
             this.listViewAvailableIDs.Name = "listViewAvailableIDs";
-            this.listViewAvailableIDs.Size = new System.Drawing.Size(324, 412);
+            this.listViewAvailableIDs.Size = new System.Drawing.Size(324, 373);
             this.listViewAvailableIDs.TabIndex = 2;
             this.listViewAvailableIDs.UseCompatibleStateImageBehavior = false;
             this.listViewAvailableIDs.View = System.Windows.Forms.View.Details;
@@ -229,7 +232,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(816, 176);
+            this.label4.Location = new System.Drawing.Point(816, 215);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(289, 78);
             this.label4.TabIndex = 7;
@@ -248,6 +251,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonCopyRawToClipboard);
+            this.tabPage1.Controls.Add(this.buttonCopyDecodedToClipboard);
             this.tabPage1.Controls.Add(this.checkBoxHideWiFiState);
             this.tabPage1.Controls.Add(this.checkBoxDecodeColors);
             this.tabPage1.Controls.Add(this.checkBoxHIdeHeartbeat);
@@ -260,7 +265,7 @@
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.listViewAvailableIDs);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.richTextBox1);
+            this.tabPage1.Controls.Add(this.richTextBoxDecodedd);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -269,9 +274,55 @@
             this.tabPage1.Text = "Decode tool";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // checkBoxHideWiFiState
+            // 
+            this.checkBoxHideWiFiState.AutoSize = true;
+            this.checkBoxHideWiFiState.Location = new System.Drawing.Point(394, 122);
+            this.checkBoxHideWiFiState.Name = "checkBoxHideWiFiState";
+            this.checkBoxHideWiFiState.Size = new System.Drawing.Size(98, 17);
+            this.checkBoxHideWiFiState.TabIndex = 15;
+            this.checkBoxHideWiFiState.Text = "Hide WiFi state";
+            this.checkBoxHideWiFiState.UseVisualStyleBackColor = true;
+            this.checkBoxHideWiFiState.CheckedChanged += new System.EventHandler(this.checkBoxHideWiFiState_CheckedChanged);
+            // 
+            // checkBoxDecodeColors
+            // 
+            this.checkBoxDecodeColors.AutoSize = true;
+            this.checkBoxDecodeColors.Checked = true;
+            this.checkBoxDecodeColors.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDecodeColors.Location = new System.Drawing.Point(498, 122);
+            this.checkBoxDecodeColors.Name = "checkBoxDecodeColors";
+            this.checkBoxDecodeColors.Size = new System.Drawing.Size(123, 17);
+            this.checkBoxDecodeColors.TabIndex = 14;
+            this.checkBoxDecodeColors.Text = "Decode Tuya Colors";
+            this.checkBoxDecodeColors.UseVisualStyleBackColor = true;
+            this.checkBoxDecodeColors.CheckedChanged += new System.EventHandler(this.checkBoxDecodeColors_CheckedChanged);
+            // 
+            // checkBoxHIdeHeartbeat
+            // 
+            this.checkBoxHIdeHeartbeat.AutoSize = true;
+            this.checkBoxHIdeHeartbeat.Location = new System.Drawing.Point(292, 122);
+            this.checkBoxHIdeHeartbeat.Name = "checkBoxHIdeHeartbeat";
+            this.checkBoxHIdeHeartbeat.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxHIdeHeartbeat.TabIndex = 13;
+            this.checkBoxHIdeHeartbeat.Text = "Hide heartbeat";
+            this.checkBoxHIdeHeartbeat.UseVisualStyleBackColor = true;
+            this.checkBoxHIdeHeartbeat.CheckedChanged += new System.EventHandler(this.checkBoxHIdeHeartbeat_CheckedChanged);
+            // 
+            // checkBoxStrTypeAsBytes
+            // 
+            this.checkBoxStrTypeAsBytes.AutoSize = true;
+            this.checkBoxStrTypeAsBytes.Location = new System.Drawing.Point(8, 122);
+            this.checkBoxStrTypeAsBytes.Name = "checkBoxStrTypeAsBytes";
+            this.checkBoxStrTypeAsBytes.Size = new System.Drawing.Size(277, 17);
+            this.checkBoxStrTypeAsBytes.TabIndex = 12;
+            this.checkBoxStrTypeAsBytes.Text = "Display STR type as hex bytes instead of ASCII string";
+            this.checkBoxStrTypeAsBytes.UseVisualStyleBackColor = true;
+            this.checkBoxStrTypeAsBytes.CheckedChanged += new System.EventHandler(this.checkBoxStrTypeAsBytes_CheckedChanged);
+            // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(729, 129);
+            this.buttonClear.Location = new System.Drawing.Point(729, 124);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 11;
@@ -293,6 +344,7 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.checkBoxPauseUART);
             this.panel1.Controls.Add(this.labelTXStats);
             this.panel1.Controls.Add(this.labelRXStats);
             this.panel1.Controls.Add(this.buttonOpenCloseTX);
@@ -305,7 +357,7 @@
             this.panel1.Controls.Add(this.comboBoxPortRX);
             this.panel1.Location = new System.Drawing.Point(819, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(322, 130);
+            this.panel1.Size = new System.Drawing.Size(322, 169);
             this.panel1.TabIndex = 9;
             // 
             // labelTXStats
@@ -449,51 +501,35 @@
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // checkBoxStrTypeAsBytes
+            // checkBoxPauseUART
             // 
-            this.checkBoxStrTypeAsBytes.AutoSize = true;
-            this.checkBoxStrTypeAsBytes.Location = new System.Drawing.Point(8, 122);
-            this.checkBoxStrTypeAsBytes.Name = "checkBoxStrTypeAsBytes";
-            this.checkBoxStrTypeAsBytes.Size = new System.Drawing.Size(277, 17);
-            this.checkBoxStrTypeAsBytes.TabIndex = 12;
-            this.checkBoxStrTypeAsBytes.Text = "Display STR type as hex bytes instead of ASCII string";
-            this.checkBoxStrTypeAsBytes.UseVisualStyleBackColor = true;
-            this.checkBoxStrTypeAsBytes.CheckedChanged += new System.EventHandler(this.checkBoxStrTypeAsBytes_CheckedChanged);
+            this.checkBoxPauseUART.AutoSize = true;
+            this.checkBoxPauseUART.Location = new System.Drawing.Point(7, 133);
+            this.checkBoxPauseUART.Name = "checkBoxPauseUART";
+            this.checkBoxPauseUART.Size = new System.Drawing.Size(195, 17);
+            this.checkBoxPauseUART.TabIndex = 10;
+            this.checkBoxPauseUART.Text = "Pause capture (but keep port inuse)";
+            this.checkBoxPauseUART.UseVisualStyleBackColor = true;
             // 
-            // checkBoxHIdeHeartbeat
+            // buttonCopyDecodedToClipboard
             // 
-            this.checkBoxHIdeHeartbeat.AutoSize = true;
-            this.checkBoxHIdeHeartbeat.Location = new System.Drawing.Point(292, 122);
-            this.checkBoxHIdeHeartbeat.Name = "checkBoxHIdeHeartbeat";
-            this.checkBoxHIdeHeartbeat.Size = new System.Drawing.Size(96, 17);
-            this.checkBoxHIdeHeartbeat.TabIndex = 13;
-            this.checkBoxHIdeHeartbeat.Text = "Hide heartbeat";
-            this.checkBoxHIdeHeartbeat.UseVisualStyleBackColor = true;
-            this.checkBoxHIdeHeartbeat.CheckedChanged += new System.EventHandler(this.checkBoxHIdeHeartbeat_CheckedChanged);
+            this.buttonCopyDecodedToClipboard.Location = new System.Drawing.Point(640, 148);
+            this.buttonCopyDecodedToClipboard.Name = "buttonCopyDecodedToClipboard";
+            this.buttonCopyDecodedToClipboard.Size = new System.Drawing.Size(164, 23);
+            this.buttonCopyDecodedToClipboard.TabIndex = 16;
+            this.buttonCopyDecodedToClipboard.Text = "Copy decoded to clipboard";
+            this.buttonCopyDecodedToClipboard.UseVisualStyleBackColor = true;
+            this.buttonCopyDecodedToClipboard.Click += new System.EventHandler(this.buttonCopyDecodedToClipboard_Click);
             // 
-            // checkBoxDecodeColors
+            // buttonCopyRawToClipboard
             // 
-            this.checkBoxDecodeColors.AutoSize = true;
-            this.checkBoxDecodeColors.Checked = true;
-            this.checkBoxDecodeColors.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDecodeColors.Location = new System.Drawing.Point(498, 122);
-            this.checkBoxDecodeColors.Name = "checkBoxDecodeColors";
-            this.checkBoxDecodeColors.Size = new System.Drawing.Size(123, 17);
-            this.checkBoxDecodeColors.TabIndex = 14;
-            this.checkBoxDecodeColors.Text = "Decode Tuya Colors";
-            this.checkBoxDecodeColors.UseVisualStyleBackColor = true;
-            this.checkBoxDecodeColors.CheckedChanged += new System.EventHandler(this.checkBoxDecodeColors_CheckedChanged);
-            // 
-            // checkBoxHideWiFiState
-            // 
-            this.checkBoxHideWiFiState.AutoSize = true;
-            this.checkBoxHideWiFiState.Location = new System.Drawing.Point(394, 122);
-            this.checkBoxHideWiFiState.Name = "checkBoxHideWiFiState";
-            this.checkBoxHideWiFiState.Size = new System.Drawing.Size(98, 17);
-            this.checkBoxHideWiFiState.TabIndex = 15;
-            this.checkBoxHideWiFiState.Text = "Hide WiFi state";
-            this.checkBoxHideWiFiState.UseVisualStyleBackColor = true;
-            this.checkBoxHideWiFiState.CheckedChanged += new System.EventHandler(this.checkBoxHideWiFiState_CheckedChanged);
+            this.buttonCopyRawToClipboard.Location = new System.Drawing.Point(470, 147);
+            this.buttonCopyRawToClipboard.Name = "buttonCopyRawToClipboard";
+            this.buttonCopyRawToClipboard.Size = new System.Drawing.Size(164, 23);
+            this.buttonCopyRawToClipboard.TabIndex = 17;
+            this.buttonCopyRawToClipboard.Text = "Copy raw to clipboard";
+            this.buttonCopyRawToClipboard.UseVisualStyleBackColor = true;
+            this.buttonCopyRawToClipboard.Click += new System.EventHandler(this.buttonCopyRawToClipboard_Click);
             // 
             // FormTuyaMCUAnalyzer
             // 
@@ -522,7 +558,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxDecodedd;
         private System.Windows.Forms.ListView listViewAvailableIDs;
         private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.ColumnHeader type;
@@ -565,6 +601,9 @@
         private System.Windows.Forms.CheckBox checkBoxHIdeHeartbeat;
         private System.Windows.Forms.CheckBox checkBoxDecodeColors;
         private System.Windows.Forms.CheckBox checkBoxHideWiFiState;
+        private System.Windows.Forms.CheckBox checkBoxPauseUART;
+        private System.Windows.Forms.Button buttonCopyRawToClipboard;
+        private System.Windows.Forms.Button buttonCopyDecodedToClipboard;
     }
 }
 
