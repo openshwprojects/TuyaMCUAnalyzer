@@ -44,7 +44,7 @@ namespace TuyaMCUAnalyzer
         }
         private List<byte> getNextPacket(ref List<byte> p)
         {
-            for(int i = 0; i < p.Count-7; i++)
+            for(int i = 0; i < p.Count-6; i++)
             {
                 if(p[i] == 0x55 && p[i+1] == 0xAA)
                 {
@@ -106,7 +106,8 @@ namespace TuyaMCUAnalyzer
                     string strDataForColor = "";
                     for (int si = 0; si < sectorLen; si++)
                     {
-                        strDataForColor += Convert.ToChar(p[ofs + si + 4]);
+                        byte b = p[ofs + si + 4];
+                        strDataForColor += Convert.ToChar(b);
                         if (dataType == TuyaType.Str && checkBoxStrTypeAsBytes.Checked == false)
                         {
                             // ascii string
@@ -179,10 +180,14 @@ namespace TuyaMCUAnalyzer
                 case 0x1C:
                     cmdName = "Date";
                     break;
+                case 0x0B:
+                    cmdName = "QuerySignalStrength";
+                    break;
             }
             string s = "";
             switch (cmd)
             {
+                case 0x22:
                 case 7:
                     int ofs = 6;
                     while (ofs + 4 < p.Count)
@@ -245,7 +250,7 @@ namespace TuyaMCUAnalyzer
             RichTextBoxExtensions.AppendText(richTextBoxDecodedd, cmdName + "\t\t", Color.Red);
             RichTextBoxExtensions.AppendText(richTextBoxDecodedd, "LEN" + "\t", Color.Green);
              s = "";
-            if (cmd == 7)
+            if (cmd == 7 || cmd == 0x22)
             {
                 parseDPData(p);
             }
@@ -546,18 +551,25 @@ namespace TuyaMCUAnalyzer
         }
         bool parseTuyaColor(string s, out Color c)
         {
-            if (s.Length == 12)
+            try
             {
-                string[] substrings = new string[3];
-                for (int i = 0; i < 3; i++)
+                if (s.Length == 12)
                 {
-                    substrings[i] = s.Substring(i * 4, 4);
+                    string[] substrings = new string[3];
+                    for (int i = 0; i < 3; i++)
+                    {
+                        substrings[i] = s.Substring(i * 4, 4);
+                    }
+                    int hue = int.Parse(substrings[0], System.Globalization.NumberStyles.HexNumber);
+                    int sat1000 = int.Parse(substrings[1], System.Globalization.NumberStyles.HexNumber);
+                    int val1000 = int.Parse(substrings[2], System.Globalization.NumberStyles.HexNumber);
+                    c = HsvToRgb(hue, sat1000 * 0.001, val1000 * 0.001);
+                    return true;
                 }
-                int hue = int.Parse(substrings[0], System.Globalization.NumberStyles.HexNumber);
-                int sat1000 = int.Parse(substrings[1], System.Globalization.NumberStyles.HexNumber);
-                int val1000 = int.Parse(substrings[2], System.Globalization.NumberStyles.HexNumber);
-                c = HsvToRgb(hue, sat1000*0.001, val1000 * 0.001);
-                return true;
+            }
+            catch(Exception ex)
+            {
+                // TODO: show
             }
             c = Color.Black;
             return false;
