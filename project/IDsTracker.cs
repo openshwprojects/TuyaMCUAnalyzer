@@ -37,9 +37,7 @@ namespace TuyaMCUAnalyzer
     }
     class IDsTracker
     {
-        Dictionary<int, IDTracker> vars = new Dictionary<int, IDTracker>();
-
-        public void addValueInt(int id, TuyaType type, int value)
+        public void addValueInt(int id, TuyaType type, int value, Dictionary<int, IDTracker> vars)
         {
             IDTracker tr;
             vars.TryGetValue(id, out tr);
@@ -52,7 +50,7 @@ namespace TuyaMCUAnalyzer
             }
             tr.addValue(value);
         }
-        public void addValueStr(int id, TuyaType type, string value)
+        public void addValueStr(int id, TuyaType type, string value, Dictionary<int, IDTracker> vars)
         {
             IDTracker tr;
             vars.TryGetValue(id, out tr);
@@ -66,7 +64,7 @@ namespace TuyaMCUAnalyzer
             tr.addValue(value);
         }
 
-        internal void display(ListView tg)
+        internal void display(ListView tg, Dictionary<int, IDTracker> vars)
         {
             tg.Items.Clear();
             foreach(var v in vars)

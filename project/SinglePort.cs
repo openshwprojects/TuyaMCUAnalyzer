@@ -22,7 +22,7 @@ namespace TuyaMCUAnalyzer
         public delegate void PacketHandlerDelegate(byte[] data);
         PacketHandlerDelegate receiveCallback;
         
-        int totalBytesReceived;
+        public int totalBytesReceived;
         public SinglePort(Button BT, ComboBox CB, Label LB, PacketHandlerDelegate cb, ComboBox comboBoxBaud)
         {
             this.buttonOpen = BT;
