@@ -324,7 +324,7 @@ namespace TuyaMCUAnalyzer
                 {
                     parseDPData(p, vars, ofs);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     int baseOfs = 6;
                     int bDateValid = p[baseOfs + 0]; // bDateValid
@@ -354,7 +354,6 @@ namespace TuyaMCUAnalyzer
             }
             else if(cmd == 6 && ver == 0)
             {
-                dateMode:
                 int baseOfs = 6;
                 int bDateValid = p[baseOfs+0]; // bDateValid
                 if (bDateValid == 1)
@@ -403,8 +402,8 @@ namespace TuyaMCUAnalyzer
         {
             refresh();
         }
-        byte special_marker_sent = (byte)'S';
-        byte special_marker_recv = (byte)'R';
+        byte special_marker_sent = 0x73;
+        byte special_marker_recv = 0x72;
         int specialMarkerCount = 10;
         void refresh() {
             int cursorPosition = richTextBoxSrc.SelectionStart;
@@ -469,7 +468,7 @@ namespace TuyaMCUAnalyzer
                     r.Add(value);
                     i += 2;
                 }
-                catch(Exception eX)
+                catch(Exception)
                 {
                     i++;
                 }
@@ -506,7 +505,7 @@ namespace TuyaMCUAnalyzer
                 }
                 if (comment.Length > 0)
                 {
-                    RichTextBoxExtensions.AppendText(richTextBoxDecoded, comment + Environment.NewLine, Color.Black);
+                    RichTextBoxExtensions.AppendText(richTextBoxDecoded, Environment.NewLine + comment + Environment.NewLine, Color.Black);
                 }
                 displayPacket(packet, vars);
             }
@@ -568,7 +567,7 @@ namespace TuyaMCUAnalyzer
                     examplesToolStripMenuItem.DropDownItems.Add(item2);
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("No examples found? Get sample captures from Github!");
             }
@@ -591,7 +590,7 @@ namespace TuyaMCUAnalyzer
                     return true;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 // TODO: show
             }
@@ -814,6 +813,11 @@ namespace TuyaMCUAnalyzer
         private void checkBoxRealtimeDual_CheckedChanged(object sender, EventArgs e)
         {
             setDualCaptureEnabled(checkBoxRealtimeDual.Checked);
+            if (!checkBoxRealtimeDual.Checked)
+            {
+                portRX.closePort();
+                portTX.closePort();
+            }
         }
 
         string[] allPorts;
@@ -915,6 +919,11 @@ namespace TuyaMCUAnalyzer
         private void checkBoxHideDate_CheckedChanged(object sender, EventArgs e)
         {
             refresh();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
