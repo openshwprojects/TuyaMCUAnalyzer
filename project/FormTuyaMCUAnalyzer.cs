@@ -675,6 +675,7 @@ namespace TuyaMCUAnalyzer
             scanForExamplesCaptures();
             setDualCaptureEnabled(false);
             typeof(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(listViewDecoded, true, null);
+            richTextBoxSrc.Text = "Start of capture\n";
             refresh();
         }
         public void loadFileBinary(string fname)
