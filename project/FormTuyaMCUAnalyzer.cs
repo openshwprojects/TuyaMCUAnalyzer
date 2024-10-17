@@ -133,11 +133,11 @@ namespace TuyaMCUAnalyzer
                 }
                 ofs += (4 + sectorLen);
             }
-            PrintLineHex.SubItems[9].Text = contentString + " Col: ■";
-            PrintLineHex.SubItems[9].ForeColor = col;
             if (bHadColor)
             {
-                bHadColor = true;
+                bHadColor = false;
+                PrintLineHex.SubItems[9].Text = contentString + " Col: ■";
+                PrintLineHex.SubItems[9].ForeColor = col;
             }
         }
         void displayPacket(List<byte> p, Dictionary<int, IDTracker> vars)
