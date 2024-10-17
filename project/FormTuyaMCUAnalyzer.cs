@@ -139,6 +139,11 @@ namespace TuyaMCUAnalyzer
                 PrintLineHex.SubItems[9].Text = contentString + " Col: ■";
                 PrintLineHex.SubItems[9].ForeColor = col;
             }
+            else 
+            {
+                PrintLineHex.SubItems[9].Text = contentString;
+                PrintLineHex.SubItems[9].ForeColor = Color.Black;
+            }
         }
         void displayPacket(List<byte> p, Dictionary<int, IDTracker> vars)
         {

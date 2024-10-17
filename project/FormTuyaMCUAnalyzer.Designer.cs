@@ -66,39 +66,39 @@
             this.checkBoxHIdeHeartbeat = new System.Windows.Forms.CheckBox();
             this.checkBoxStrTypeAsBytes = new System.Windows.Forms.CheckBox();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.richTextBoxComparer = new System.Windows.Forms.RichTextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxPauseUART = new System.Windows.Forms.CheckBox();
+            this.labelTXStats = new System.Windows.Forms.Label();
+            this.labelRXStats = new System.Windows.Forms.Label();
+            this.buttonOpenCloseTX = new System.Windows.Forms.Button();
+            this.comboBoxBaud = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.buttonOpenCloseRX = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBoxPortTX = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxPortRX = new System.Windows.Forms.ComboBox();
+            this.checkBoxRealtimeDual = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.listViewAvailableIDs = new System.Windows.Forms.ListView();
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBoxRealtimeDual = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBoxPortRX = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxPortTX = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.buttonOpenCloseRX = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBoxBaud = new System.Windows.Forms.ComboBox();
-            this.buttonOpenCloseTX = new System.Windows.Forms.Button();
-            this.labelRXStats = new System.Windows.Forms.Label();
-            this.labelTXStats = new System.Windows.Forms.Label();
-            this.checkBoxPauseUART = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.richTextBoxComparer = new System.Windows.Forms.RichTextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -200,9 +200,9 @@
             this.label3.Location = new System.Drawing.Point(20, 1145);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(570, 20);
+            this.label3.Size = new System.Drawing.Size(362, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Tuya packets display (each packet is displayed twice - hex version and decoded)";
+            this.label3.Text = "Tuya packets display. Dump  / Decoded in one line";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // tabControl1
@@ -451,6 +451,213 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.checkBoxRealtimeDual);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.listViewAvailableIDs);
+            this.groupBox1.Location = new System.Drawing.Point(1494, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(521, 1134);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "COM and Statistic";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.checkBoxPauseUART);
+            this.panel1.Controls.Add(this.labelTXStats);
+            this.panel1.Controls.Add(this.labelRXStats);
+            this.panel1.Controls.Add(this.buttonOpenCloseTX);
+            this.panel1.Controls.Add(this.comboBoxBaud);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.buttonOpenCloseRX);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.comboBoxPortTX);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.comboBoxPortRX);
+            this.panel1.Location = new System.Drawing.Point(22, 61);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(461, 237);
+            this.panel1.TabIndex = 9;
+            // 
+            // checkBoxPauseUART
+            // 
+            this.checkBoxPauseUART.AutoSize = true;
+            this.checkBoxPauseUART.Location = new System.Drawing.Point(10, 205);
+            this.checkBoxPauseUART.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxPauseUART.Name = "checkBoxPauseUART";
+            this.checkBoxPauseUART.Size = new System.Drawing.Size(288, 24);
+            this.checkBoxPauseUART.TabIndex = 10;
+            this.checkBoxPauseUART.Text = "Pause capture (but keep port inuse)";
+            this.checkBoxPauseUART.UseVisualStyleBackColor = true;
+            // 
+            // labelTXStats
+            // 
+            this.labelTXStats.AutoSize = true;
+            this.labelTXStats.Location = new System.Drawing.Point(6, 132);
+            this.labelTXStats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTXStats.Name = "labelTXStats";
+            this.labelTXStats.Size = new System.Drawing.Size(68, 20);
+            this.labelTXStats.TabIndex = 9;
+            this.labelTXStats.Text = "TX stats";
+            // 
+            // labelRXStats
+            // 
+            this.labelRXStats.AutoSize = true;
+            this.labelRXStats.Location = new System.Drawing.Point(6, 57);
+            this.labelRXStats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRXStats.Name = "labelRXStats";
+            this.labelRXStats.Size = new System.Drawing.Size(71, 20);
+            this.labelRXStats.TabIndex = 8;
+            this.labelRXStats.Text = "RX stats";
+            // 
+            // buttonOpenCloseTX
+            // 
+            this.buttonOpenCloseTX.Location = new System.Drawing.Point(232, 85);
+            this.buttonOpenCloseTX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonOpenCloseTX.Name = "buttonOpenCloseTX";
+            this.buttonOpenCloseTX.Size = new System.Drawing.Size(112, 35);
+            this.buttonOpenCloseTX.TabIndex = 7;
+            this.buttonOpenCloseTX.Text = "Open";
+            this.buttonOpenCloseTX.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxBaud
+            // 
+            this.comboBoxBaud.FormattingEnabled = true;
+            this.comboBoxBaud.Items.AddRange(new object[] {
+            "9600",
+            "115200"});
+            this.comboBoxBaud.Location = new System.Drawing.Point(87, 157);
+            this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxBaud.Name = "comboBoxBaud";
+            this.comboBoxBaud.Size = new System.Drawing.Size(134, 28);
+            this.comboBoxBaud.TabIndex = 6;
+            this.comboBoxBaud.SelectedIndexChanged += new System.EventHandler(this.comboBoxBaud_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 162);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 20);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Baud:";
+            // 
+            // buttonOpenCloseRX
+            // 
+            this.buttonOpenCloseRX.Location = new System.Drawing.Point(232, 18);
+            this.buttonOpenCloseRX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonOpenCloseRX.Name = "buttonOpenCloseRX";
+            this.buttonOpenCloseRX.Size = new System.Drawing.Size(112, 35);
+            this.buttonOpenCloseRX.TabIndex = 4;
+            this.buttonOpenCloseRX.Text = "Open";
+            this.buttonOpenCloseRX.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 92);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "WiFi TX:";
+            // 
+            // comboBoxPortTX
+            // 
+            this.comboBoxPortTX.FormattingEnabled = true;
+            this.comboBoxPortTX.Location = new System.Drawing.Point(87, 88);
+            this.comboBoxPortTX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxPortTX.Name = "comboBoxPortTX";
+            this.comboBoxPortTX.Size = new System.Drawing.Size(134, 28);
+            this.comboBoxPortTX.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 23);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 20);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "WiFi RX:";
+            // 
+            // comboBoxPortRX
+            // 
+            this.comboBoxPortRX.FormattingEnabled = true;
+            this.comboBoxPortRX.Location = new System.Drawing.Point(87, 18);
+            this.comboBoxPortRX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxPortRX.Name = "comboBoxPortRX";
+            this.comboBoxPortRX.Size = new System.Drawing.Size(134, 28);
+            this.comboBoxPortRX.TabIndex = 0;
+            // 
+            // checkBoxRealtimeDual
+            // 
+            this.checkBoxRealtimeDual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxRealtimeDual.AutoSize = true;
+            this.checkBoxRealtimeDual.Location = new System.Drawing.Point(22, 23);
+            this.checkBoxRealtimeDual.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxRealtimeDual.Name = "checkBoxRealtimeDual";
+            this.checkBoxRealtimeDual.Size = new System.Drawing.Size(288, 24);
+            this.checkBoxRealtimeDual.TabIndex = 8;
+            this.checkBoxRealtimeDual.Text = "Realtime Dual UART Capture Mode";
+            this.checkBoxRealtimeDual.UseVisualStyleBackColor = true;
+            this.checkBoxRealtimeDual.CheckedChanged += new System.EventHandler(this.checkBoxRealtimeDual_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 303);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(429, 120);
+            this.label4.TabIndex = 7;
+            this.label4.Text = resources.GetString("label4.Text");
+            // 
+            // listViewAvailableIDs
+            // 
+            this.listViewAvailableIDs.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.listViewAvailableIDs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.id,
+            this.type,
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewAvailableIDs.HideSelection = false;
+            this.listViewAvailableIDs.Location = new System.Drawing.Point(25, 452);
+            this.listViewAvailableIDs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewAvailableIDs.Name = "listViewAvailableIDs";
+            this.listViewAvailableIDs.Size = new System.Drawing.Size(458, 655);
+            this.listViewAvailableIDs.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listViewAvailableIDs.TabIndex = 2;
+            this.listViewAvailableIDs.UseCompatibleStateImageBehavior = false;
+            this.listViewAvailableIDs.View = System.Windows.Forms.View.Details;
+            // 
+            // id
+            // 
+            this.id.Text = "ID";
+            this.id.Width = 37;
+            // 
+            // type
+            // 
+            this.type.Text = "Type";
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "VCnt";
+            this.columnHeader1.Width = 72;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Values";
+            this.columnHeader2.Width = 181;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label5);
@@ -492,213 +699,6 @@
             this.timer1.Interval = 25;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // listViewAvailableIDs
-            // 
-            this.listViewAvailableIDs.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.listViewAvailableIDs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.id,
-            this.type,
-            this.columnHeader1,
-            this.columnHeader2});
-            this.listViewAvailableIDs.HideSelection = false;
-            this.listViewAvailableIDs.Location = new System.Drawing.Point(25, 452);
-            this.listViewAvailableIDs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listViewAvailableIDs.Name = "listViewAvailableIDs";
-            this.listViewAvailableIDs.Size = new System.Drawing.Size(458, 655);
-            this.listViewAvailableIDs.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listViewAvailableIDs.TabIndex = 2;
-            this.listViewAvailableIDs.UseCompatibleStateImageBehavior = false;
-            this.listViewAvailableIDs.View = System.Windows.Forms.View.Details;
-            // 
-            // id
-            // 
-            this.id.Text = "ID";
-            this.id.Width = 37;
-            // 
-            // type
-            // 
-            this.type.Text = "Type";
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "VCnt";
-            this.columnHeader1.Width = 72;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Values";
-            this.columnHeader2.Width = 181;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 303);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(429, 120);
-            this.label4.TabIndex = 7;
-            this.label4.Text = resources.GetString("label4.Text");
-            // 
-            // checkBoxRealtimeDual
-            // 
-            this.checkBoxRealtimeDual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxRealtimeDual.AutoSize = true;
-            this.checkBoxRealtimeDual.Location = new System.Drawing.Point(22, 23);
-            this.checkBoxRealtimeDual.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkBoxRealtimeDual.Name = "checkBoxRealtimeDual";
-            this.checkBoxRealtimeDual.Size = new System.Drawing.Size(288, 24);
-            this.checkBoxRealtimeDual.TabIndex = 8;
-            this.checkBoxRealtimeDual.Text = "Realtime Dual UART Capture Mode";
-            this.checkBoxRealtimeDual.UseVisualStyleBackColor = true;
-            this.checkBoxRealtimeDual.CheckedChanged += new System.EventHandler(this.checkBoxRealtimeDual_CheckedChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.checkBoxPauseUART);
-            this.panel1.Controls.Add(this.labelTXStats);
-            this.panel1.Controls.Add(this.labelRXStats);
-            this.panel1.Controls.Add(this.buttonOpenCloseTX);
-            this.panel1.Controls.Add(this.comboBoxBaud);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.buttonOpenCloseRX);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.comboBoxPortTX);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.comboBoxPortRX);
-            this.panel1.Location = new System.Drawing.Point(22, 61);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(461, 237);
-            this.panel1.TabIndex = 9;
-            // 
-            // comboBoxPortRX
-            // 
-            this.comboBoxPortRX.FormattingEnabled = true;
-            this.comboBoxPortRX.Location = new System.Drawing.Point(87, 18);
-            this.comboBoxPortRX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBoxPortRX.Name = "comboBoxPortRX";
-            this.comboBoxPortRX.Size = new System.Drawing.Size(134, 28);
-            this.comboBoxPortRX.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 23);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "WiFi RX:";
-            // 
-            // comboBoxPortTX
-            // 
-            this.comboBoxPortTX.FormattingEnabled = true;
-            this.comboBoxPortTX.Location = new System.Drawing.Point(87, 88);
-            this.comboBoxPortTX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBoxPortTX.Name = "comboBoxPortTX";
-            this.comboBoxPortTX.Size = new System.Drawing.Size(134, 28);
-            this.comboBoxPortTX.TabIndex = 2;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 92);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 20);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "WiFi TX:";
-            // 
-            // buttonOpenCloseRX
-            // 
-            this.buttonOpenCloseRX.Location = new System.Drawing.Point(232, 18);
-            this.buttonOpenCloseRX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonOpenCloseRX.Name = "buttonOpenCloseRX";
-            this.buttonOpenCloseRX.Size = new System.Drawing.Size(112, 35);
-            this.buttonOpenCloseRX.TabIndex = 4;
-            this.buttonOpenCloseRX.Text = "Open";
-            this.buttonOpenCloseRX.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 162);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 20);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Baud:";
-            // 
-            // comboBoxBaud
-            // 
-            this.comboBoxBaud.FormattingEnabled = true;
-            this.comboBoxBaud.Items.AddRange(new object[] {
-            "9600",
-            "115200"});
-            this.comboBoxBaud.Location = new System.Drawing.Point(87, 157);
-            this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBoxBaud.Name = "comboBoxBaud";
-            this.comboBoxBaud.Size = new System.Drawing.Size(134, 28);
-            this.comboBoxBaud.TabIndex = 6;
-            this.comboBoxBaud.SelectedIndexChanged += new System.EventHandler(this.comboBoxBaud_SelectedIndexChanged);
-            // 
-            // buttonOpenCloseTX
-            // 
-            this.buttonOpenCloseTX.Location = new System.Drawing.Point(232, 85);
-            this.buttonOpenCloseTX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonOpenCloseTX.Name = "buttonOpenCloseTX";
-            this.buttonOpenCloseTX.Size = new System.Drawing.Size(112, 35);
-            this.buttonOpenCloseTX.TabIndex = 7;
-            this.buttonOpenCloseTX.Text = "Open";
-            this.buttonOpenCloseTX.UseVisualStyleBackColor = true;
-            // 
-            // labelRXStats
-            // 
-            this.labelRXStats.AutoSize = true;
-            this.labelRXStats.Location = new System.Drawing.Point(6, 57);
-            this.labelRXStats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelRXStats.Name = "labelRXStats";
-            this.labelRXStats.Size = new System.Drawing.Size(71, 20);
-            this.labelRXStats.TabIndex = 8;
-            this.labelRXStats.Text = "RX stats";
-            // 
-            // labelTXStats
-            // 
-            this.labelTXStats.AutoSize = true;
-            this.labelTXStats.Location = new System.Drawing.Point(6, 132);
-            this.labelTXStats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTXStats.Name = "labelTXStats";
-            this.labelTXStats.Size = new System.Drawing.Size(68, 20);
-            this.labelTXStats.TabIndex = 9;
-            this.labelTXStats.Text = "TX stats";
-            // 
-            // checkBoxPauseUART
-            // 
-            this.checkBoxPauseUART.AutoSize = true;
-            this.checkBoxPauseUART.Location = new System.Drawing.Point(10, 205);
-            this.checkBoxPauseUART.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkBoxPauseUART.Name = "checkBoxPauseUART";
-            this.checkBoxPauseUART.Size = new System.Drawing.Size(288, 24);
-            this.checkBoxPauseUART.TabIndex = 10;
-            this.checkBoxPauseUART.Text = "Pause capture (but keep port inuse)";
-            this.checkBoxPauseUART.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Controls.Add(this.checkBoxRealtimeDual);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.listViewAvailableIDs);
-            this.groupBox1.Location = new System.Drawing.Point(1494, 8);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(521, 1134);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "COM and Statistic";
-            // 
             // FormTuyaMCUAnalyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -722,12 +722,12 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
