@@ -23,10 +23,7 @@ namespace TuyaMCUAnalyzer
             InitializeComponent();
         }
         private bool bUseVarsForVer0Cmd6InsteadOfDate = true;
-        // private ListViewItem PrintLineHex = new ListViewItem(new string[] { "", "", "", "", "", "", "", "", "", "", "" });
         private ListViewItem PrintLineHex = new ListViewItem(new string[] { "", "", "", "", "", "", "", "", "", "", "" });
-        //private ListViewItem PrintLineDecoded = new ListViewItem(new string[] { "", "", "", "", "", "", "", "", "", "", "" });
-        //private ListViewItem NewLine = new ListViewItem(new string[] { "", "", "", "", "", "", "", "", "", "", "" });
 
         private string getSpecialMarker(ref List<byte> p)
         {
@@ -136,19 +133,12 @@ namespace TuyaMCUAnalyzer
                 }
                 ofs += (4 + sectorLen);
             }
-            ////RichTextBoxExtensions.AppendText(richTextBoxDecoded, contentString, Color.Orange);
             PrintLineHex.SubItems[9].Text = contentString + " Col: ■";
             PrintLineHex.SubItems[9].ForeColor = col;
             if (bHadColor)
             {
                 bHadColor = true;
-                // ichTextBoxExtensions.AppendText(richTextBoxDecoded, " Col: ■", col);
-                // PrintLineDecoded.SubItems[9].Text = "Col: ■";
-                // PrintLineDecoded.SubItems[9].ForeColor = col;
             }
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "\t", Color.Orange);
-            //  //RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
-
         }
         void displayPacket(List<byte> p, Dictionary<int, IDTracker> vars)
         {
@@ -157,18 +147,12 @@ namespace TuyaMCUAnalyzer
             byte lenA = p[4];
             byte lenB = p[5];
             PrintLineHex.UseItemStyleForSubItems = false;
-            // PrintLineDecoded.UseItemStyleForSubItems = false;
-
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, p[0].ToString("X2") + " "+p[1].ToString("X2") + "\t", Color.Black);
             PrintLineHex.SubItems[1].Text = p[0].ToString("X2") + " " + p[1].ToString("X2");
             PrintLineHex.SubItems[1].ForeColor = Color.Black;
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, p[2].ToString("X2") + "\t", Color.Magenta);
             PrintLineHex.SubItems[2].Text = p[2].ToString("X2");
             PrintLineHex.SubItems[2].ForeColor = Color.Magenta;
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, p[3].ToString("X2") + "\t\t", Color.Red);
             PrintLineHex.SubItems[3].Text = p[3].ToString("X2");
             PrintLineHex.SubItems[3].ForeColor = Color.Red;
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, p[4].ToString("X2") + " " + p[5].ToString("X2") + "\t", Color.Green);
             PrintLineHex.SubItems[4].Text = p[4].ToString("X2") + " " + p[5].ToString("X2");
             PrintLineHex.SubItems[4].ForeColor = Color.Green;
             string cmdName = "Unk";
@@ -216,13 +200,10 @@ namespace TuyaMCUAnalyzer
                     {
                         int sectorLen = p[ofs + 2] << 8 | p[ofs + 3];
                         int dpId = p[ofs];
-                        //RichTextBoxExtensions.AppendText(richTextBoxDecoded, p[ofs].ToString("X2") + " ", Color.Black);
                         PrintLineHex.SubItems[5].Text = p[ofs].ToString("X2");
                         PrintLineHex.SubItems[5].ForeColor = Color.Black;
-                        //RichTextBoxExtensions.AppendText(richTextBoxDecoded, p[ofs + 1].ToString("X2") + " ", Color.Green);
                         PrintLineHex.SubItems[6].Text = p[ofs + 1].ToString("X2");
                         PrintLineHex.SubItems[6].ForeColor = Color.Green;
-                        //RichTextBoxExtensions.AppendText(richTextBoxDecoded, p[ofs + 2].ToString("X2") + " " + p[ofs + 3].ToString("X2") + " ", Color.Black);
                         PrintLineHex.SubItems[7].Text = p[ofs + 2].ToString("X2") + " " + p[ofs + 3].ToString("X2");
                         PrintLineHex.SubItems[7].ForeColor = Color.Black;
                         int dataType = p[ofs + 1];
@@ -230,14 +211,12 @@ namespace TuyaMCUAnalyzer
                         if (sectorLen == 1)
                         {
                             int iVal = (int)p[ofs + 4];
-                            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, iVal.ToString("X2") + " ", Color.Orange);
                             PrintLineHex.SubItems[8].Text = iVal.ToString("X2");
                             PrintLineHex.SubItems[8].ForeColor = Color.Orange;
                         }
                         else if (sectorLen == 4)
                         {
                             int iVal = p[ofs + 4] << 24 | p[ofs + 5] << 16 | p[ofs + 6] << 8 | p[ofs + 7];
-                            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, iVal.ToString("X8") + " ", Color.Orange);
                             PrintLineHex.SubItems[8].Text = iVal.ToString("X8");
                             PrintLineHex.SubItems[8].ForeColor = Color.Orange;
                         }
@@ -250,14 +229,11 @@ namespace TuyaMCUAnalyzer
                                     varStr += "";
                                 varStr += p[ofs + si + 4].ToString("X2");
                             }
-                            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, varStr + " ", Color.Orange);
                             PrintLineHex.SubItems[8].Text = varStr;
                             PrintLineHex.SubItems[8].ForeColor = Color.Orange;
                         }
                         ofs += (4 + sectorLen);
                     }
-                    //RichTextBoxExtensions.AppendText(richTextBoxDecoded, s + "\t", Color.Gray);
-                    //RichTextBoxExtensions.AppendText(richTextBoxDecoded, s + "\t", Color.Gray);
                     break;
                 default:
                     for (int i = 6; i < p.Count - 1; i++)
@@ -265,31 +241,16 @@ namespace TuyaMCUAnalyzer
                         s += p[i].ToString("X2");
                         s += "";
                     }
-                    //RichTextBoxExtensions.AppendText(richTextBoxDecoded, s + "\t", Color.Gray);
                     PrintLineHex.SubItems[8].Text = s;
                     PrintLineHex.SubItems[8].ForeColor = Color.Gray;
-                    //   //RichTextBoxExtensions.AppendText(richTextBox1, s + "\t", Color.Gray);
                     break;
             }
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, p[p.Count-1].ToString("X2") + "\t", Color.Black);
             PrintLineHex.SubItems[10].Text = p[p.Count - 1].ToString("X2");
             PrintLineHex.SubItems[10].ForeColor = Color.Black;
 
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, Environment.NewLine);
-            // listViewDecoded.Items.AddRange(new ListViewItem[] { NewLine, PrintLineHex, PrintLineDecoded });
             listViewDecoded.Items.AddRange(new ListViewItem[] { PrintLineHex});
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "HEADER" + "\t", Color.Black);
-            //PrintLineDecoded.SubItems[1].Text = "HEADER";
-            //PrintLineDecoded.SubItems[1].ForeColor = Color.Black;
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "VER=" + p[2].ToString("X2") + "\t", Color.Magenta);
-            //PrintLineDecoded.SubItems[2].Text = "VER=" + p[2].ToString("X2");
-            //PrintLineDecoded.SubItems[2].ForeColor = Color.Magenta;
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, cmdName + "\t\t", Color.Red);
             PrintLineHex.SubItems[9].Text = cmdName;
             PrintLineHex.SubItems[9].ForeColor = Color.Red;
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "LEN" + "\t", Color.Green);
-            //PrintLineDecoded.SubItems[4].Text = "LEN";
-            //PrintLineDecoded.SubItems[4].ForeColor = Color.Green;
             s = "";
             if (cmd == 7 || cmd == 0x22)
             {
@@ -298,7 +259,6 @@ namespace TuyaMCUAnalyzer
             else if (cmd == 1)
             {
                 string str = ASCIIEncoding.ASCII.GetString(p.ToArray(), 6, p.Count - 7);
-                //RichTextBoxExtensions.AppendText(richTextBoxDecoded, str + "\t", Color.Gray);
                 PrintLineHex.SubItems[9].Text = str;
                 PrintLineHex.SubItems[9].ForeColor = Color.Gray;
             }
@@ -316,15 +276,11 @@ namespace TuyaMCUAnalyzer
                     // NOTE: some packets don't have second here?
                     int second = p[baseOfs + 6]; //  second
 
-                    //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "bOk=" + bDateValid +
-                    //    " " + year + "/" + month + "/" + day + " " +
-                    //    hour + ":" + minute + ":" + second + "\t", Color.Gray);
                     PrintLineHex.SubItems[9].Text = "bOk=" + bDateValid + " " + year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
                     PrintLineHex.SubItems[9].ForeColor = Color.Gray;
                 }
                 else
                 {
-                    //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "INVALID date\t", Color.Gray);
                     PrintLineHex.SubItems[9].Text = "INVALID date";
                     PrintLineHex.SubItems[9].ForeColor = Color.Gray;
                 }
@@ -354,15 +310,11 @@ namespace TuyaMCUAnalyzer
                                                      // NOTE: some packets don't have second here?
                         int second = p[ofs + 6]; //  second
 
-                        //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "bOk=" + bDateValid +
-                        //    " " + year + "/" + month + "/" + day + " " +
-                        //    hour + ":" + minute + ":" + second + "\t", Color.Gray);
                         PrintLineHex.SubItems[9].Text = "bOk=" + bDateValid + " " + year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
                         PrintLineHex.SubItems[9].ForeColor = Color.Gray;
                     }
                     else
                     {
-                        //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "INVALID date\t", Color.Gray);
                         PrintLineHex.SubItems[9].Text = "INVALID date";
                         PrintLineHex.SubItems[9].ForeColor = Color.Gray;
                     }
@@ -386,23 +338,16 @@ namespace TuyaMCUAnalyzer
                                                      // NOTE: some packets don't have second here?
                         int second = p[baseOfs + 6]; //  second
 
-                        //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "bOk=" + bDateValid +
-                        //    " " + year + "/" + month + "/" + day + " " +
-                        //    hour + ":" + minute + ":" + second + "\t", Color.Gray);
                         PrintLineHex.SubItems[9].Text = "bOk=" + bDateValid + " " + year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
                         PrintLineHex.SubItems[9].ForeColor = Color.Gray;
                     }
                     else
                     {
-                        //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "INVALID date\t", Color.Gray);
                         PrintLineHex.SubItems[9].Text = "INVALID date";
                         PrintLineHex.SubItems[9].ForeColor = Color.Gray;
                     }
                     parseDPData(p, vars, ofs+7);
                 }
-                //RichTextBoxExtensions.AppendText(richTextBoxDecoded, contentString + "\t", Color.Orange);
-                //  //RichTextBoxExtensions.AppendText(richTextBox1, contentString + "\t", Color.Gray);
-                
             }
             else if(cmd == 6 && ver == 0)
             {
@@ -418,15 +363,11 @@ namespace TuyaMCUAnalyzer
                     // NOTE: some packets don't have second here?
                     int second = p[baseOfs + 6]; //  second
 
-                    //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "bOk=" + bDateValid +
-                    //    " " + year + "/" + month + "/" + day + " " +
-                    //    hour + ":" + minute + ":" + second + "\t", Color.Gray);
                     PrintLineHex.SubItems[9].Text = "bOk=" + bDateValid + " " + year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
                     PrintLineHex.SubItems[9].ForeColor = Color.Gray;
                 }
                 else
                 {
-                    //RichTextBoxExtensions.AppendText(richTextBoxDecoded, "INVALID date\t", Color.Gray);
                     PrintLineHex.SubItems[9].Text = "INVALID date";
                     PrintLineHex.SubItems[9].ForeColor = Color.Gray;
                 }
@@ -439,25 +380,15 @@ namespace TuyaMCUAnalyzer
                     s += p[i].ToString("X2");
                     s += "";
                 }
-                //RichTextBoxExtensions.AppendText(richTextBoxDecoded, s + "\t", Color.Gray);
                 PrintLineHex.SubItems[8].Text = s;
                 PrintLineHex.SubItems[8].ForeColor = Color.Gray;
-                // //RichTextBoxExtensions.AppendText(richTextBox1, s + "\t", Color.Gray);
             }
-            // RichTextBoxExtensions.AppendText(richTextBoxDecoded, "CHK" + "\t", Color.Black);
-            // PrintLineDecoded.SubItems[10].Text = "CHK";
-            // PrintLineDecoded.SubItems[10].ForeColor = Color.Black;
             switch (cmd)
             {
                 case 0:
 
                     break;
             }
-            //RichTextBoxExtensions.AppendText(richTextBoxDecoded, Environment.NewLine);
-            // //RichTextBoxExtensions.AppendText(richTextBoxDecoded, Environment.NewLine);
-            // listViewDecoded.Items.AddRange(new ListViewItem[] { NewLine, NewLine  });
-            // richTextBoxDecoded.SelectionStart = richTextBoxDecoded.Text.Length;
-            // richTextBoxDecoded.ScrollToCaret();
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -470,14 +401,9 @@ namespace TuyaMCUAnalyzer
             int cursorPosition = richTextBoxSrc.SelectionStart;
             int currentLineIndex = richTextBoxSrc.GetLineFromCharIndex(cursorPosition);
             tracker = new IDsTracker();
-            // richTextBoxDecoded.Clear();
-            // string text = richTextBoxSrc.Text;
-
-            // Den gesamten Text der RichTextBox in Zeilen unterteilen
             string[] lines = richTextBoxSrc.Lines;
             string text = "";
 
-            // Den Text der aktuellen Zeile abrufen
             if (lines.Length > 2)
             {
                 text = lines[currentLineIndex - 2] + '\n' + lines[currentLineIndex - 1];
@@ -566,11 +492,8 @@ namespace TuyaMCUAnalyzer
                 }
                 if (comment.Length > 0)
                 {
-                    //RichTextBoxExtensions.AppendText(richTextBoxDecoded, Environment.NewLine + comment + Environment.NewLine, Color.Black);
                     listViewDecoded.BeginUpdate();
                     PrintLineHex = new ListViewItem(new string[] { "", "", "", "", "", "", "", "", "", "", "" });
-                    //PrintLineDecoded = new ListViewItem(new string[] { "", "", "", "", "", "", "", "", "", "", "" });
-                    //NewLine = new ListViewItem(new string[] { "", "", "", "", "", "", "", "", "", "", "" });
                     PrintLineHex.SubItems[0].Text = comment;
                     if (comment == "IN")
                     {
@@ -614,7 +537,6 @@ namespace TuyaMCUAnalyzer
                 order++;
                 len = len / 1024;
             }
-
             // Adjust the format string to your preferences. For example "{0:0.#}{1}" would
             // show a single decimal place, and no space.
             string result = String.Format("{0:0.##} {1}", len, sizes[order]);
@@ -705,6 +627,7 @@ namespace TuyaMCUAnalyzer
             comboBoxBaud.SelectedIndex = 0;
             scanForExamplesCaptures();
             setDualCaptureEnabled(false);
+            typeof(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(listViewDecoded, true, null);
             refresh();
         }
         public void loadFileBinary(string fname)
@@ -959,7 +882,6 @@ namespace TuyaMCUAnalyzer
         private void buttonClear_Click(object sender, EventArgs e)
         {
             richTextBoxSrc.Text = "";
-            //richTextBoxDecoded.Text = "";
             listViewDecoded.Items.Clear();
             portRX.totalBytesReceived = 0;
             portTX.totalBytesReceived = 0;
