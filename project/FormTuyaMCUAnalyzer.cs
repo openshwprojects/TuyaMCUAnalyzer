@@ -7,6 +7,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -395,10 +396,6 @@ namespace TuyaMCUAnalyzer
                     break;
             }
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            refresh();
-        }
         byte special_marker_sent = 0x73;
         byte special_marker_recv = 0x72;
         int specialMarkerCount = 10;
@@ -675,10 +672,9 @@ namespace TuyaMCUAnalyzer
             scanForExamplesCaptures();
             setDualCaptureEnabled(false);
             typeof(Control).GetProperty("DoubleBuffered", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(listViewDecoded, true, null);
-            richTextBoxSrc.Text = "Start of capture\n";
             refresh();
         }
-        public void loadFileBinary(string fname)
+        public void LoadFileBinary(string fname)
         {
             byte[] bytes = File.ReadAllBytes(fname);
             string data;
@@ -687,36 +683,50 @@ namespace TuyaMCUAnalyzer
             {
                 data += bytes[i].ToString("X2");
             }
-            setData(data);
+            SplitAndProcessString(data, "55AA");
         }
-        public void setData(string data)
+
+        private void SplitAndProcessString(string inputString, string marker)
         {
-            richTextBoxSrc.Text = data;
+            // Use a regex to find all matches of the pattern including the marker
+            string pattern = $"({Regex.Escape(marker)}.*?)(?={marker}|$)"; // Match marker and following content
+            MatchCollection matches = Regex.Matches(inputString, pattern);
+
+            // Process each match
+            foreach (Match match in matches)
+            {
+                SetData("//R by file ...\n" + match.Value + "\n");
+            }
+        }
+
+        private void SetData(string data)
+        {
+            richTextBoxSrc.AppendText(data);
             refresh();
         }
-        public void loadFileText(string fname)
+        private void LoadFileText(string fname)
         {
             string data;
             data = File.ReadAllText(fname);
-            setData(data);
+            SplitAndProcessString(data, "55AA");
         }
-        public void loadFile(string fname)
+        private void LoadFile(string fname)
         {
             string ext = Path.GetExtension(fname);
             if (ext == ".bin")
             {
-                loadFileBinary(fname);
+                LoadFileBinary(fname);
             }
             else
             {
-                loadFileText(fname);
+                LoadFileText(fname);
             }
         }
         private void exampleClickListener(object sender, EventArgs e)
         {
             ToolStripMenuItem it = (ToolStripMenuItem)sender;
             string path = it.Tag as string;
-            loadFile(path);
+            LoadFile(path);
         }
 
         bool refreshingComparer;
@@ -797,7 +807,7 @@ namespace TuyaMCUAnalyzer
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog.FileName;
-                loadFileBinary(fileName);
+                LoadFileBinary(fileName);
             }
         }
 
@@ -808,7 +818,7 @@ namespace TuyaMCUAnalyzer
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = openFileDialog.FileName;
-                loadFileText(fileName);
+                LoadFileText(fileName);
             }
         }
 
@@ -931,8 +941,11 @@ namespace TuyaMCUAnalyzer
         {
             richTextBoxSrc.Text = "";
             listViewDecoded.Items.Clear();
-            portRX.totalBytesReceived = 0;
-            portTX.totalBytesReceived = 0;
+            if (checkBoxRealtimeDual.Checked)
+            {
+                portRX.totalBytesReceived = 0;
+                portTX.totalBytesReceived = 0;
+            }
             vars.Clear();
         }
 
@@ -980,6 +993,11 @@ namespace TuyaMCUAnalyzer
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void richTextBoxSrcChanged(object sender, EventArgs e)
+        {
+            refresh();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

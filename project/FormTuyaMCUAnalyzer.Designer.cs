@@ -271,7 +271,7 @@
             this.richTextBoxSrc.Size = new System.Drawing.Size(1468, 501);
             this.richTextBoxSrc.TabIndex = 10;
             this.richTextBoxSrc.Text = "";
-            this.richTextBoxSrc.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.richTextBoxSrc.TextChanged += new System.EventHandler(this.richTextBoxSrcChanged);
             // 
             // listViewDecoded
             // 
