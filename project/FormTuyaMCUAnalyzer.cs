@@ -968,6 +968,7 @@ namespace TuyaMCUAnalyzer
         private void buttonCopyRawToClipboard_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(richTextBoxSrc.Text);
+            MessageBox.Show("Data copied to clipboard.");
         }
 
         private void checkBoxHideDate_CheckedChanged(object sender, EventArgs e)
