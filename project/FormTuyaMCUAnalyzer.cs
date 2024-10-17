@@ -627,6 +627,48 @@ namespace TuyaMCUAnalyzer
             else
                 return Color.FromArgb(255, v, p, q);
         }
+        // Method to export ListView data to CSV format
+        private string ExportListViewToCsv(System.Windows.Forms.ListView listView)
+        {
+            StringBuilder csvBuilder = new StringBuilder();
+
+            // Export header (column names)
+            for (int col = 0; col < listView.Columns.Count; col++)
+            {
+                csvBuilder.Append(EscapeCsvValue(listView.Columns[col].Text));
+                if (col < listView.Columns.Count - 1)
+                {
+                    csvBuilder.Append(",");  // Add comma between columns
+                }
+            }
+            csvBuilder.AppendLine();  // New line after header
+
+            // Export rows
+            foreach (ListViewItem item in listView.Items)
+            {
+                // Add the first column value
+                csvBuilder.Append(EscapeCsvValue(item.Text));
+                for (int subItem = 1; subItem < item.SubItems.Count; subItem++)
+                {
+                    csvBuilder.Append(",");
+                    csvBuilder.Append(EscapeCsvValue(item.SubItems[subItem].Text));
+                }
+                csvBuilder.AppendLine();  // New line after each row
+            }
+
+            return csvBuilder.ToString();
+        }
+
+        // Method to escape CSV values (in case they contain commas, quotes, etc.)
+        private string EscapeCsvValue(string value)
+        {
+            if (value.Contains(",") || value.Contains("\"") || value.Contains("\n"))
+            {
+                return $"\"{value.Replace("\"", "\"\"")}\"";  // Escape quotes by doubling them
+            }
+            return value;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBoxBaud.SelectedIndex = 0;
@@ -915,7 +957,12 @@ namespace TuyaMCUAnalyzer
 
         private void buttonCopyDecodedToClipboard_Click(object sender, EventArgs e)
         {
-            //Clipboard.SetText(richTextBoxDecoded.Text);
+            string csv = ExportListViewToCsv(listViewDecoded);
+
+            // Copy the CSV to the clipboard
+            Clipboard.SetText(csv);
+
+            MessageBox.Show("Data copied to clipboard.");
         }
 
         private void buttonCopyRawToClipboard_Click(object sender, EventArgs e)

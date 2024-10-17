@@ -384,9 +384,9 @@
             this.buttonCopyDecodedToClipboard.Location = new System.Drawing.Point(1196, 5);
             this.buttonCopyDecodedToClipboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonCopyDecodedToClipboard.Name = "buttonCopyDecodedToClipboard";
-            this.buttonCopyDecodedToClipboard.Size = new System.Drawing.Size(246, 35);
+            this.buttonCopyDecodedToClipboard.Size = new System.Drawing.Size(296, 35);
             this.buttonCopyDecodedToClipboard.TabIndex = 16;
-            this.buttonCopyDecodedToClipboard.Text = "Copy decoded to clipboard";
+            this.buttonCopyDecodedToClipboard.Text = "Copy decoded to clipboard (CSV)";
             this.buttonCopyDecodedToClipboard.UseVisualStyleBackColor = true;
             this.buttonCopyDecodedToClipboard.Click += new System.EventHandler(this.buttonCopyDecodedToClipboard_Click);
             // 
