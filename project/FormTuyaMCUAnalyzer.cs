@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -981,8 +982,15 @@ namespace TuyaMCUAnalyzer
 
         private void buttonCopyRawToClipboard_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(richTextBoxSrc.Text);
-            MessageBox.Show("Data copied to clipboard.");
+            try 
+            { 
+                Clipboard.SetText(richTextBoxSrc.Text);
+                MessageBox.Show("Data copied to clipboard.");
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("No data available");
+            }
         }
 
         private void checkBoxHideDate_CheckedChanged(object sender, EventArgs e)
