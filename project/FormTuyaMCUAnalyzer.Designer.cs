@@ -104,16 +104,14 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1230, 1011);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(820, 657);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 20);
+            this.label1.Size = new System.Drawing.Size(200, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "VCnt is a number of unique vals received";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -121,7 +119,8 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2019, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1269, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -131,27 +130,27 @@
             this.openToolStripMenuItem,
             this.openTextToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(220, 34);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.openToolStripMenuItem.Text = "Open binary..";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // openTextToolStripMenuItem
             // 
             this.openTextToolStripMenuItem.Name = "openTextToolStripMenuItem";
-            this.openTextToolStripMenuItem.Size = new System.Drawing.Size(220, 34);
+            this.openTextToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.openTextToolStripMenuItem.Text = "Open text...";
             this.openTextToolStripMenuItem.Click += new System.EventHandler(this.openTextToolStripMenuItem_Click);
             // 
             // examplesToolStripMenuItem
             // 
             this.examplesToolStripMenuItem.Name = "examplesToolStripMenuItem";
-            this.examplesToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
+            this.examplesToolStripMenuItem.Size = new System.Drawing.Size(69, 22);
             this.examplesToolStripMenuItem.Text = "Examples";
             // 
             // helpToolStripMenuItem
@@ -161,46 +160,44 @@
             this.ourTutorialsToolStripMenuItem,
             this.ourYoutubeChannelToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // ourForumToolStripMenuItem
             // 
             this.ourForumToolStripMenuItem.Name = "ourForumToolStripMenuItem";
-            this.ourForumToolStripMenuItem.Size = new System.Drawing.Size(282, 34);
+            this.ourForumToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.ourForumToolStripMenuItem.Text = "Our forum";
             this.ourForumToolStripMenuItem.Click += new System.EventHandler(this.ourForumToolStripMenuItem_Click);
             // 
             // ourTutorialsToolStripMenuItem
             // 
             this.ourTutorialsToolStripMenuItem.Name = "ourTutorialsToolStripMenuItem";
-            this.ourTutorialsToolStripMenuItem.Size = new System.Drawing.Size(282, 34);
+            this.ourTutorialsToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.ourTutorialsToolStripMenuItem.Text = "Our tutorials";
             this.ourTutorialsToolStripMenuItem.Click += new System.EventHandler(this.ourTutorialsToolStripMenuItem_Click);
             // 
             // ourYoutubeChannelToolStripMenuItem
             // 
             this.ourYoutubeChannelToolStripMenuItem.Name = "ourYoutubeChannelToolStripMenuItem";
-            this.ourYoutubeChannelToolStripMenuItem.Size = new System.Drawing.Size(282, 34);
+            this.ourYoutubeChannelToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.ourYoutubeChannelToolStripMenuItem.Text = "Our Youtube Channel";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 55);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(13, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(422, 20);
+            this.label2.Size = new System.Drawing.Size(286, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Raw packets data in hex format (example: \"55AA0300\" etc";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 1145);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(13, 611);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(362, 20);
+            this.label3.Size = new System.Drawing.Size(250, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Tuya packets display. Dump  / Decoded in one line";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -210,11 +207,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 33);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(2019, 1211);
+            this.tabControl1.Size = new System.Drawing.Size(1269, 653);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
@@ -231,11 +227,10 @@
             this.tabPage1.Controls.Add(this.buttonClear);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage1.Size = new System.Drawing.Size(2011, 1178);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(1261, 627);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Decode tool";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -245,7 +240,8 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(24, 89);
+            this.splitContainer1.Location = new System.Drawing.Point(2, 58);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -256,8 +252,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listViewDecoded);
-            this.splitContainer1.Size = new System.Drawing.Size(1468, 1051);
-            this.splitContainer1.SplitterDistance = 524;
+            this.splitContainer1.Size = new System.Drawing.Size(895, 549);
+            this.splitContainer1.SplitterDistance = 273;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 19;
             // 
             // richTextBoxSrc
@@ -266,9 +263,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxSrc.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxSrc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.richTextBoxSrc.Name = "richTextBoxSrc";
-            this.richTextBoxSrc.Size = new System.Drawing.Size(1468, 501);
+            this.richTextBoxSrc.Size = new System.Drawing.Size(895, 273);
             this.richTextBoxSrc.TabIndex = 10;
             this.richTextBoxSrc.Text = "";
             this.richTextBoxSrc.TextChanged += new System.EventHandler(this.richTextBoxSrcChanged);
@@ -294,9 +290,10 @@
             this.listViewDecoded.GridLines = true;
             this.listViewDecoded.HideSelection = false;
             this.listViewDecoded.LabelWrap = false;
-            this.listViewDecoded.Location = new System.Drawing.Point(6, 9);
+            this.listViewDecoded.Location = new System.Drawing.Point(2, 2);
+            this.listViewDecoded.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewDecoded.Name = "listViewDecoded";
-            this.listViewDecoded.Size = new System.Drawing.Size(1462, 516);
+            this.listViewDecoded.Size = new System.Drawing.Size(893, 268);
             this.listViewDecoded.TabIndex = 0;
             this.listViewDecoded.UseCompatibleStateImageBehavior = false;
             this.listViewDecoded.View = System.Windows.Forms.View.Details;
@@ -304,47 +301,47 @@
             // CHDirection
             // 
             this.CHDirection.Text = "Direction";
-            this.CHDirection.Width = 50;
+            this.CHDirection.Width = 56;
             // 
             // CHHeader
             // 
             this.CHHeader.Text = "Header";
-            this.CHHeader.Width = 50;
+            this.CHHeader.Width = 49;
             // 
             // CHVersion
             // 
             this.CHVersion.Text = "Version";
-            this.CHVersion.Width = 50;
+            this.CHVersion.Width = 48;
             // 
             // CHState
             // 
             this.CHState.Text = "State";
-            this.CHState.Width = 50;
+            this.CHState.Width = 37;
             // 
             // CHLenght
             // 
             this.CHLenght.Text = "Lenght";
-            this.CHLenght.Width = 50;
+            this.CHLenght.Width = 46;
             // 
             // CHDPid
             // 
             this.CHDPid.Text = "DPid";
-            this.CHDPid.Width = 50;
+            this.CHDPid.Width = 36;
             // 
             // CHType
             // 
             this.CHType.Text = "Type";
-            this.CHType.Width = 50;
+            this.CHType.Width = 39;
             // 
             // CHDataLen
             // 
             this.CHDataLen.Text = "DataLen";
-            this.CHDataLen.Width = 50;
+            this.CHDataLen.Width = 55;
             // 
             // CHData
             // 
             this.CHData.Text = "Data";
-            this.CHData.Width = 200;
+            this.CHData.Width = 255;
             // 
             // CHDecoded
             // 
@@ -354,15 +351,14 @@
             // CHChecksum
             // 
             this.CHChecksum.Text = "Checksum";
-            this.CHChecksum.Width = 50;
+            this.CHChecksum.Width = 70;
             // 
             // checkBoxHideDate
             // 
             this.checkBoxHideDate.AutoSize = true;
-            this.checkBoxHideDate.Location = new System.Drawing.Point(521, 16);
-            this.checkBoxHideDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxHideDate.Location = new System.Drawing.Point(347, 10);
             this.checkBoxHideDate.Name = "checkBoxHideDate";
-            this.checkBoxHideDate.Size = new System.Drawing.Size(107, 24);
+            this.checkBoxHideDate.Size = new System.Drawing.Size(74, 17);
             this.checkBoxHideDate.TabIndex = 18;
             this.checkBoxHideDate.Text = "Hide Date";
             this.checkBoxHideDate.UseVisualStyleBackColor = true;
@@ -370,10 +366,9 @@
             // 
             // buttonCopyRawToClipboard
             // 
-            this.buttonCopyRawToClipboard.Location = new System.Drawing.Point(942, 5);
-            this.buttonCopyRawToClipboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonCopyRawToClipboard.Location = new System.Drawing.Point(628, 3);
             this.buttonCopyRawToClipboard.Name = "buttonCopyRawToClipboard";
-            this.buttonCopyRawToClipboard.Size = new System.Drawing.Size(246, 35);
+            this.buttonCopyRawToClipboard.Size = new System.Drawing.Size(201, 23);
             this.buttonCopyRawToClipboard.TabIndex = 17;
             this.buttonCopyRawToClipboard.Text = "Copy raw to clipboard";
             this.buttonCopyRawToClipboard.UseVisualStyleBackColor = true;
@@ -381,22 +376,20 @@
             // 
             // buttonCopyDecodedToClipboard
             // 
-            this.buttonCopyDecodedToClipboard.Location = new System.Drawing.Point(1196, 5);
-            this.buttonCopyDecodedToClipboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonCopyDecodedToClipboard.Location = new System.Drawing.Point(628, 30);
             this.buttonCopyDecodedToClipboard.Name = "buttonCopyDecodedToClipboard";
-            this.buttonCopyDecodedToClipboard.Size = new System.Drawing.Size(296, 35);
+            this.buttonCopyDecodedToClipboard.Size = new System.Drawing.Size(201, 23);
             this.buttonCopyDecodedToClipboard.TabIndex = 16;
-            this.buttonCopyDecodedToClipboard.Text = "Copy decoded to clipboard (CSV)";
+            this.buttonCopyDecodedToClipboard.Text = "Copy decoded to clipboard CSV";
             this.buttonCopyDecodedToClipboard.UseVisualStyleBackColor = true;
             this.buttonCopyDecodedToClipboard.Click += new System.EventHandler(this.buttonCopyDecodedToClipboard_Click);
             // 
             // checkBoxHideWiFiState
             // 
             this.checkBoxHideWiFiState.AutoSize = true;
-            this.checkBoxHideWiFiState.Location = new System.Drawing.Point(370, 16);
-            this.checkBoxHideWiFiState.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxHideWiFiState.Location = new System.Drawing.Point(247, 10);
             this.checkBoxHideWiFiState.Name = "checkBoxHideWiFiState";
-            this.checkBoxHideWiFiState.Size = new System.Drawing.Size(143, 24);
+            this.checkBoxHideWiFiState.Size = new System.Drawing.Size(98, 17);
             this.checkBoxHideWiFiState.TabIndex = 15;
             this.checkBoxHideWiFiState.Text = "Hide WiFi state";
             this.checkBoxHideWiFiState.UseVisualStyleBackColor = true;
@@ -407,10 +400,9 @@
             this.checkBoxDecodeColors.AutoSize = true;
             this.checkBoxDecodeColors.Checked = true;
             this.checkBoxDecodeColors.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDecodeColors.Location = new System.Drawing.Point(636, 16);
-            this.checkBoxDecodeColors.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxDecodeColors.Location = new System.Drawing.Point(424, 10);
             this.checkBoxDecodeColors.Name = "checkBoxDecodeColors";
-            this.checkBoxDecodeColors.Size = new System.Drawing.Size(178, 24);
+            this.checkBoxDecodeColors.Size = new System.Drawing.Size(123, 17);
             this.checkBoxDecodeColors.TabIndex = 14;
             this.checkBoxDecodeColors.Text = "Decode Tuya Colors";
             this.checkBoxDecodeColors.UseVisualStyleBackColor = true;
@@ -419,10 +411,9 @@
             // checkBoxHIdeHeartbeat
             // 
             this.checkBoxHIdeHeartbeat.AutoSize = true;
-            this.checkBoxHIdeHeartbeat.Location = new System.Drawing.Point(217, 16);
-            this.checkBoxHIdeHeartbeat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxHIdeHeartbeat.Location = new System.Drawing.Point(145, 10);
             this.checkBoxHIdeHeartbeat.Name = "checkBoxHIdeHeartbeat";
-            this.checkBoxHIdeHeartbeat.Size = new System.Drawing.Size(141, 24);
+            this.checkBoxHIdeHeartbeat.Size = new System.Drawing.Size(96, 17);
             this.checkBoxHIdeHeartbeat.TabIndex = 13;
             this.checkBoxHIdeHeartbeat.Text = "Hide heartbeat";
             this.checkBoxHIdeHeartbeat.UseVisualStyleBackColor = true;
@@ -431,10 +422,9 @@
             // checkBoxStrTypeAsBytes
             // 
             this.checkBoxStrTypeAsBytes.AutoSize = true;
-            this.checkBoxStrTypeAsBytes.Location = new System.Drawing.Point(12, 16);
-            this.checkBoxStrTypeAsBytes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxStrTypeAsBytes.Location = new System.Drawing.Point(8, 10);
             this.checkBoxStrTypeAsBytes.Name = "checkBoxStrTypeAsBytes";
-            this.checkBoxStrTypeAsBytes.Size = new System.Drawing.Size(210, 24);
+            this.checkBoxStrTypeAsBytes.Size = new System.Drawing.Size(145, 17);
             this.checkBoxStrTypeAsBytes.TabIndex = 12;
             this.checkBoxStrTypeAsBytes.Text = "Display STR type as hex ";
             this.checkBoxStrTypeAsBytes.UseVisualStyleBackColor = true;
@@ -442,10 +432,9 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(822, 5);
-            this.buttonClear.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonClear.Location = new System.Drawing.Point(548, 3);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(112, 35);
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 11;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
@@ -458,9 +447,11 @@
             this.groupBox1.Controls.Add(this.checkBoxRealtimeDual);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.listViewAvailableIDs);
-            this.groupBox1.Location = new System.Drawing.Point(1494, 8);
+            this.groupBox1.Location = new System.Drawing.Point(904, 3);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(521, 1134);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(350, 604);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "COM and Statistic";
@@ -479,19 +470,17 @@
             this.panel1.Controls.Add(this.comboBoxPortTX);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.comboBoxPortRX);
-            this.panel1.Location = new System.Drawing.Point(22, 61);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(18, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(461, 237);
+            this.panel1.Size = new System.Drawing.Size(307, 154);
             this.panel1.TabIndex = 9;
             // 
             // checkBoxPauseUART
             // 
             this.checkBoxPauseUART.AutoSize = true;
-            this.checkBoxPauseUART.Location = new System.Drawing.Point(10, 205);
-            this.checkBoxPauseUART.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxPauseUART.Location = new System.Drawing.Point(7, 133);
             this.checkBoxPauseUART.Name = "checkBoxPauseUART";
-            this.checkBoxPauseUART.Size = new System.Drawing.Size(288, 24);
+            this.checkBoxPauseUART.Size = new System.Drawing.Size(195, 17);
             this.checkBoxPauseUART.TabIndex = 10;
             this.checkBoxPauseUART.Text = "Pause capture (but keep port inuse)";
             this.checkBoxPauseUART.UseVisualStyleBackColor = true;
@@ -499,29 +488,26 @@
             // labelTXStats
             // 
             this.labelTXStats.AutoSize = true;
-            this.labelTXStats.Location = new System.Drawing.Point(6, 132);
-            this.labelTXStats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTXStats.Location = new System.Drawing.Point(4, 86);
             this.labelTXStats.Name = "labelTXStats";
-            this.labelTXStats.Size = new System.Drawing.Size(68, 20);
+            this.labelTXStats.Size = new System.Drawing.Size(46, 13);
             this.labelTXStats.TabIndex = 9;
             this.labelTXStats.Text = "TX stats";
             // 
             // labelRXStats
             // 
             this.labelRXStats.AutoSize = true;
-            this.labelRXStats.Location = new System.Drawing.Point(6, 57);
-            this.labelRXStats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRXStats.Location = new System.Drawing.Point(4, 37);
             this.labelRXStats.Name = "labelRXStats";
-            this.labelRXStats.Size = new System.Drawing.Size(71, 20);
+            this.labelRXStats.Size = new System.Drawing.Size(47, 13);
             this.labelRXStats.TabIndex = 8;
             this.labelRXStats.Text = "RX stats";
             // 
             // buttonOpenCloseTX
             // 
-            this.buttonOpenCloseTX.Location = new System.Drawing.Point(232, 85);
-            this.buttonOpenCloseTX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonOpenCloseTX.Location = new System.Drawing.Point(155, 55);
             this.buttonOpenCloseTX.Name = "buttonOpenCloseTX";
-            this.buttonOpenCloseTX.Size = new System.Drawing.Size(112, 35);
+            this.buttonOpenCloseTX.Size = new System.Drawing.Size(75, 23);
             this.buttonOpenCloseTX.TabIndex = 7;
             this.buttonOpenCloseTX.Text = "Open";
             this.buttonOpenCloseTX.UseVisualStyleBackColor = true;
@@ -532,29 +518,26 @@
             this.comboBoxBaud.Items.AddRange(new object[] {
             "9600",
             "115200"});
-            this.comboBoxBaud.Location = new System.Drawing.Point(87, 157);
-            this.comboBoxBaud.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxBaud.Location = new System.Drawing.Point(58, 102);
             this.comboBoxBaud.Name = "comboBoxBaud";
-            this.comboBoxBaud.Size = new System.Drawing.Size(134, 28);
+            this.comboBoxBaud.Size = new System.Drawing.Size(91, 21);
             this.comboBoxBaud.TabIndex = 6;
             this.comboBoxBaud.SelectedIndexChanged += new System.EventHandler(this.comboBoxBaud_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 162);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(4, 105);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 20);
+            this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 5;
             this.label8.Text = "Baud:";
             // 
             // buttonOpenCloseRX
             // 
-            this.buttonOpenCloseRX.Location = new System.Drawing.Point(232, 18);
-            this.buttonOpenCloseRX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonOpenCloseRX.Location = new System.Drawing.Point(155, 12);
             this.buttonOpenCloseRX.Name = "buttonOpenCloseRX";
-            this.buttonOpenCloseRX.Size = new System.Drawing.Size(112, 35);
+            this.buttonOpenCloseRX.Size = new System.Drawing.Size(75, 23);
             this.buttonOpenCloseRX.TabIndex = 4;
             this.buttonOpenCloseRX.Text = "Open";
             this.buttonOpenCloseRX.UseVisualStyleBackColor = true;
@@ -562,49 +545,44 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 92);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(4, 60);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 20);
+            this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 3;
             this.label7.Text = "WiFi TX:";
             // 
             // comboBoxPortTX
             // 
             this.comboBoxPortTX.FormattingEnabled = true;
-            this.comboBoxPortTX.Location = new System.Drawing.Point(87, 88);
-            this.comboBoxPortTX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxPortTX.Location = new System.Drawing.Point(58, 57);
             this.comboBoxPortTX.Name = "comboBoxPortTX";
-            this.comboBoxPortTX.Size = new System.Drawing.Size(134, 28);
+            this.comboBoxPortTX.Size = new System.Drawing.Size(91, 21);
             this.comboBoxPortTX.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 23);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(3, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 20);
+            this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 1;
             this.label6.Text = "WiFi RX:";
             // 
             // comboBoxPortRX
             // 
             this.comboBoxPortRX.FormattingEnabled = true;
-            this.comboBoxPortRX.Location = new System.Drawing.Point(87, 18);
-            this.comboBoxPortRX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBoxPortRX.Location = new System.Drawing.Point(58, 12);
             this.comboBoxPortRX.Name = "comboBoxPortRX";
-            this.comboBoxPortRX.Size = new System.Drawing.Size(134, 28);
+            this.comboBoxPortRX.Size = new System.Drawing.Size(91, 21);
             this.comboBoxPortRX.TabIndex = 0;
             // 
             // checkBoxRealtimeDual
             // 
             this.checkBoxRealtimeDual.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxRealtimeDual.AutoSize = true;
-            this.checkBoxRealtimeDual.Location = new System.Drawing.Point(22, 23);
-            this.checkBoxRealtimeDual.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBoxRealtimeDual.Location = new System.Drawing.Point(15, 15);
             this.checkBoxRealtimeDual.Name = "checkBoxRealtimeDual";
-            this.checkBoxRealtimeDual.Size = new System.Drawing.Size(288, 24);
+            this.checkBoxRealtimeDual.Size = new System.Drawing.Size(195, 17);
             this.checkBoxRealtimeDual.TabIndex = 8;
             this.checkBoxRealtimeDual.Text = "Realtime Dual UART Capture Mode";
             this.checkBoxRealtimeDual.UseVisualStyleBackColor = true;
@@ -614,10 +592,9 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 303);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(15, 197);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(429, 120);
+            this.label4.Size = new System.Drawing.Size(289, 78);
             this.label4.TabIndex = 7;
             this.label4.Text = resources.GetString("label4.Text");
             // 
@@ -630,10 +607,9 @@
             this.columnHeader1,
             this.columnHeader2});
             this.listViewAvailableIDs.HideSelection = false;
-            this.listViewAvailableIDs.Location = new System.Drawing.Point(25, 452);
-            this.listViewAvailableIDs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.listViewAvailableIDs.Location = new System.Drawing.Point(5, 313);
             this.listViewAvailableIDs.Name = "listViewAvailableIDs";
-            this.listViewAvailableIDs.Size = new System.Drawing.Size(458, 655);
+            this.listViewAvailableIDs.Size = new System.Drawing.Size(340, 288);
             this.listViewAvailableIDs.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewAvailableIDs.TabIndex = 2;
             this.listViewAvailableIDs.UseCompatibleStateImageBehavior = false;
@@ -651,7 +627,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "VCnt";
-            this.columnHeader1.Width = 72;
+            this.columnHeader1.Width = 48;
             // 
             // columnHeader2
             // 
@@ -662,11 +638,10 @@
             // 
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.richTextBoxComparer);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage2.Size = new System.Drawing.Size(2011, 1178);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(1257, 618);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Compare tool";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -674,10 +649,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 42);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(6, 27);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(674, 20);
+            this.label5.Size = new System.Drawing.Size(452, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "Here is a simple compare tool. Enter a hex string in each line, the differences w" +
     "ill be hightlihtred";
@@ -685,10 +659,9 @@
             // richTextBoxComparer
             // 
             this.richTextBoxComparer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBoxComparer.Location = new System.Drawing.Point(4, 84);
-            this.richTextBoxComparer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.richTextBoxComparer.Location = new System.Drawing.Point(3, -94);
             this.richTextBoxComparer.Name = "richTextBoxComparer";
-            this.richTextBoxComparer.Size = new System.Drawing.Size(2003, 1089);
+            this.richTextBoxComparer.Size = new System.Drawing.Size(1251, 709);
             this.richTextBoxComparer.TabIndex = 0;
             this.richTextBoxComparer.Text = "";
             this.richTextBoxComparer.TextChanged += new System.EventHandler(this.richTextBoxComparer_TextChanged);
@@ -701,16 +674,15 @@
             // 
             // FormTuyaMCUAnalyzer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2019, 1244);
+            this.ClientSize = new System.Drawing.Size(1269, 677);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(2000, 1300);
+            this.MinimumSize = new System.Drawing.Size(1285, 716);
             this.Name = "FormTuyaMCUAnalyzer";
             this.Text = "TuyaMCU Explorer/Analyzer for OpenBeken - Elektroda.com ";
             this.Load += new System.EventHandler(this.Form1_Load);
