@@ -703,7 +703,7 @@ namespace TuyaMCUAnalyzer
         private void SetData(string data)
         {
             richTextBoxSrc.AppendText(data);
-            refresh();
+            // refresh();
         }
         private void LoadFileText(string fname)
         {
@@ -941,6 +941,7 @@ namespace TuyaMCUAnalyzer
         private void buttonClear_Click(object sender, EventArgs e)
         {
             richTextBoxSrc.Text = "";
+            textBox_decode.Text = "";
             listViewDecoded.Items.Clear();
             if (checkBoxRealtimeDual.Checked)
             {
@@ -1006,6 +1007,11 @@ namespace TuyaMCUAnalyzer
         private void richTextBoxSrcChanged(object sender, EventArgs e)
         {
             refresh();
+        }
+
+        private void cb_decode_Click(object sender, EventArgs e)
+        {
+            SplitAndProcessString(textBox_decode.Text.ToUpper() , "55AA");
         }
 
         private void timer1_Tick(object sender, EventArgs e)

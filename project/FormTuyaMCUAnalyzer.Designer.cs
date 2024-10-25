@@ -44,6 +44,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox_decode = new System.Windows.Forms.TextBox();
+            this.cb_decode = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.richTextBoxSrc = new System.Windows.Forms.RichTextBox();
             this.listViewDecoded = new System.Windows.Forms.ListView();
@@ -120,7 +122,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(1269, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1384, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -188,9 +190,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(286, 13);
+            this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Raw packets data in hex format (example: \"55AA0300\" etc";
+            this.label2.Text = "Raw packets";
             // 
             // label3
             // 
@@ -210,11 +212,13 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1269, 653);
+            this.tabControl1.Size = new System.Drawing.Size(1384, 657);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBox_decode);
+            this.tabPage1.Controls.Add(this.cb_decode);
             this.tabPage1.Controls.Add(this.splitContainer1);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.checkBoxHideDate);
@@ -230,10 +234,30 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1261, 627);
+            this.tabPage1.Size = new System.Drawing.Size(1376, 631);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Decode tool";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // textBox_decode
+            // 
+            this.textBox_decode.Font = new System.Drawing.Font("Courier New", 8F);
+            this.textBox_decode.Location = new System.Drawing.Point(85, 31);
+            this.textBox_decode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_decode.Name = "textBox_decode";
+            this.textBox_decode.Size = new System.Drawing.Size(642, 20);
+            this.textBox_decode.TabIndex = 22;
+            // 
+            // cb_decode
+            // 
+            this.cb_decode.Location = new System.Drawing.Point(731, 34);
+            this.cb_decode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_decode.Name = "cb_decode";
+            this.cb_decode.Size = new System.Drawing.Size(75, 21);
+            this.cb_decode.TabIndex = 21;
+            this.cb_decode.Text = "Decode";
+            this.cb_decode.UseVisualStyleBackColor = true;
+            this.cb_decode.Click += new System.EventHandler(this.cb_decode_Click);
             // 
             // splitContainer1
             // 
@@ -252,8 +276,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.listViewDecoded);
-            this.splitContainer1.Size = new System.Drawing.Size(895, 549);
-            this.splitContainer1.SplitterDistance = 273;
+            this.splitContainer1.Size = new System.Drawing.Size(1010, 553);
+            this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 19;
             // 
@@ -262,9 +286,11 @@
             this.richTextBoxSrc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxSrc.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxSrc.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxSrc.Name = "richTextBoxSrc";
-            this.richTextBoxSrc.Size = new System.Drawing.Size(895, 273);
+            this.richTextBoxSrc.ReadOnly = true;
+            this.richTextBoxSrc.Size = new System.Drawing.Size(1010, 274);
             this.richTextBoxSrc.TabIndex = 10;
             this.richTextBoxSrc.Text = "";
             this.richTextBoxSrc.TextChanged += new System.EventHandler(this.richTextBoxSrcChanged);
@@ -287,13 +313,14 @@
             this.CHData,
             this.CHDecoded,
             this.CHChecksum});
+            this.listViewDecoded.Font = new System.Drawing.Font("Courier New", 8F);
             this.listViewDecoded.GridLines = true;
             this.listViewDecoded.HideSelection = false;
             this.listViewDecoded.LabelWrap = false;
             this.listViewDecoded.Location = new System.Drawing.Point(2, 2);
             this.listViewDecoded.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewDecoded.Name = "listViewDecoded";
-            this.listViewDecoded.Size = new System.Drawing.Size(893, 268);
+            this.listViewDecoded.Size = new System.Drawing.Size(1008, 271);
             this.listViewDecoded.TabIndex = 0;
             this.listViewDecoded.UseCompatibleStateImageBehavior = false;
             this.listViewDecoded.View = System.Windows.Forms.View.Details;
@@ -301,47 +328,45 @@
             // CHDirection
             // 
             this.CHDirection.Text = "Direction";
-            this.CHDirection.Width = 56;
+            this.CHDirection.Width = 80;
             // 
             // CHHeader
             // 
             this.CHHeader.Text = "Header";
-            this.CHHeader.Width = 49;
             // 
             // CHVersion
             // 
             this.CHVersion.Text = "Version";
-            this.CHVersion.Width = 48;
+            this.CHVersion.Width = 70;
             // 
             // CHState
             // 
             this.CHState.Text = "State";
-            this.CHState.Width = 37;
+            this.CHState.Width = 50;
             // 
             // CHLenght
             // 
             this.CHLenght.Text = "Lenght";
-            this.CHLenght.Width = 46;
             // 
             // CHDPid
             // 
             this.CHDPid.Text = "DPid";
-            this.CHDPid.Width = 36;
+            this.CHDPid.Width = 50;
             // 
             // CHType
             // 
             this.CHType.Text = "Type";
-            this.CHType.Width = 39;
+            this.CHType.Width = 50;
             // 
             // CHDataLen
             // 
             this.CHDataLen.Text = "DataLen";
-            this.CHDataLen.Width = 55;
+            this.CHDataLen.Width = 70;
             // 
             // CHData
             // 
             this.CHData.Text = "Data";
-            this.CHData.Width = 255;
+            this.CHData.Width = 200;
             // 
             // CHDecoded
             // 
@@ -366,7 +391,7 @@
             // 
             // buttonCopyRawToClipboard
             // 
-            this.buttonCopyRawToClipboard.Location = new System.Drawing.Point(628, 3);
+            this.buttonCopyRawToClipboard.Location = new System.Drawing.Point(811, 6);
             this.buttonCopyRawToClipboard.Name = "buttonCopyRawToClipboard";
             this.buttonCopyRawToClipboard.Size = new System.Drawing.Size(201, 23);
             this.buttonCopyRawToClipboard.TabIndex = 17;
@@ -376,7 +401,7 @@
             // 
             // buttonCopyDecodedToClipboard
             // 
-            this.buttonCopyDecodedToClipboard.Location = new System.Drawing.Point(628, 30);
+            this.buttonCopyDecodedToClipboard.Location = new System.Drawing.Point(811, 33);
             this.buttonCopyDecodedToClipboard.Name = "buttonCopyDecodedToClipboard";
             this.buttonCopyDecodedToClipboard.Size = new System.Drawing.Size(201, 23);
             this.buttonCopyDecodedToClipboard.TabIndex = 16;
@@ -432,7 +457,7 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(548, 3);
+            this.buttonClear.Location = new System.Drawing.Point(731, 6);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 11;
@@ -447,7 +472,7 @@
             this.groupBox1.Controls.Add(this.checkBoxRealtimeDual);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.listViewAvailableIDs);
-            this.groupBox1.Location = new System.Drawing.Point(904, 3);
+            this.groupBox1.Location = new System.Drawing.Point(1019, 3);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -641,7 +666,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1257, 618);
+            this.tabPage2.Size = new System.Drawing.Size(1261, 630);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Compare tool";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -659,9 +684,9 @@
             // richTextBoxComparer
             // 
             this.richTextBoxComparer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.richTextBoxComparer.Location = new System.Drawing.Point(3, -94);
+            this.richTextBoxComparer.Location = new System.Drawing.Point(3, -82);
             this.richTextBoxComparer.Name = "richTextBoxComparer";
-            this.richTextBoxComparer.Size = new System.Drawing.Size(1251, 709);
+            this.richTextBoxComparer.Size = new System.Drawing.Size(1255, 709);
             this.richTextBoxComparer.TabIndex = 0;
             this.richTextBoxComparer.Text = "";
             this.richTextBoxComparer.TextChanged += new System.EventHandler(this.richTextBoxComparer_TextChanged);
@@ -676,13 +701,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1269, 677);
+            this.ClientSize = new System.Drawing.Size(1384, 681);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1285, 716);
+            this.MinimumSize = new System.Drawing.Size(1400, 720);
             this.Name = "FormTuyaMCUAnalyzer";
             this.Text = "TuyaMCU Explorer/Analyzer for OpenBeken - Elektroda.com ";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -766,6 +791,8 @@
         private System.Windows.Forms.ColumnHeader type;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Button cb_decode;
+        private System.Windows.Forms.TextBox textBox_decode;
     }
 }
 
