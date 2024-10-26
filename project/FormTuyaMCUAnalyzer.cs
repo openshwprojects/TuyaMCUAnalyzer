@@ -1011,7 +1011,8 @@ namespace TuyaMCUAnalyzer
 
         private void cb_decode_Click(object sender, EventArgs e)
         {
-            SplitAndProcessString(textBox_decode.Text.ToUpper() , "55AA", "Decode entry");
+            string entry = textBox_decode.Text.ToUpper();
+            SplitAndProcessString(entry.Replace(" ", string.Empty), "55AA", "Decode entry");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
