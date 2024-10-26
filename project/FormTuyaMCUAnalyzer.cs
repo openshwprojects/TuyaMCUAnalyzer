@@ -684,10 +684,10 @@ namespace TuyaMCUAnalyzer
             {
                 data += bytes[i].ToString("X2");
             }
-            SplitAndProcessString(data, "55AA");
+            SplitAndProcessString(data, "55AA", "File");
         }
 
-        private void SplitAndProcessString(string inputString, string marker)
+        private void SplitAndProcessString(string inputString, string marker, string origin)
         {
             // Use a regex to find all matches of the pattern including the marker
             string pattern = $"({Regex.Escape(marker)}.*?)(?={marker}|$)"; // Match marker and following content
@@ -696,7 +696,7 @@ namespace TuyaMCUAnalyzer
             // Process each match
             foreach (Match match in matches)
             {
-                SetData("//R by file ...\n" + match.Value + "\n");
+                SetData("//R by " + origin + " ...\n" + match.Value + "\n");
             }
         }
 
@@ -709,7 +709,7 @@ namespace TuyaMCUAnalyzer
         {
             string data;
             data = File.ReadAllText(fname);
-            SplitAndProcessString(data, "55AA");
+            SplitAndProcessString(data, "55AA", "File");
         }
         private void LoadFile(string fname)
         {
@@ -1011,7 +1011,7 @@ namespace TuyaMCUAnalyzer
 
         private void cb_decode_Click(object sender, EventArgs e)
         {
-            SplitAndProcessString(textBox_decode.Text.ToUpper() , "55AA");
+            SplitAndProcessString(textBox_decode.Text.ToUpper() , "55AA", "Decode entry");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
