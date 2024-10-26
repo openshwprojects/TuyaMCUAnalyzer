@@ -52,7 +52,7 @@
             this.CHDirection = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CHHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CHVersion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CHState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CHCommand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CHLength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CHDPid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CHType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -305,7 +305,7 @@
             this.CHDirection,
             this.CHHeader,
             this.CHVersion,
-            this.CHState,
+            this.CHCommand,
             this.CHLength,
             this.CHDPid,
             this.CHType,
@@ -327,8 +327,8 @@
             // 
             // CHDirection
             // 
-            this.CHDirection.Text = "Direction";
-            this.CHDirection.Width = 80;
+            this.CHDirection.Text = "Dir.";
+            this.CHDirection.Width = 40;
             // 
             // CHHeader
             // 
@@ -336,13 +336,13 @@
             // 
             // CHVersion
             // 
-            this.CHVersion.Text = "Version";
-            this.CHVersion.Width = 70;
+            this.CHVersion.Text = "Vers.";
+            this.CHVersion.Width = 50;
             // 
-            // CHState
+            // CHCommand
             // 
-            this.CHState.Text = "State";
-            this.CHState.Width = 50;
+            this.CHCommand.Text = "Cmd";
+            this.CHCommand.Width = 40;
             // 
             // CHLength
             // 
@@ -366,12 +366,12 @@
             // CHData
             // 
             this.CHData.Text = "Data";
-            this.CHData.Width = 200;
+            this.CHData.Width = 240;
             // 
             // CHDecoded
             // 
             this.CHDecoded.Text = "Decoded";
-            this.CHDecoded.Width = 200;
+            this.CHDecoded.Width = 240;
             // 
             // CHChecksum
             // 
@@ -763,7 +763,7 @@
         private System.Windows.Forms.ColumnHeader CHDirection;
         private System.Windows.Forms.ColumnHeader CHHeader;
         private System.Windows.Forms.ColumnHeader CHVersion;
-        private System.Windows.Forms.ColumnHeader CHState;
+        private System.Windows.Forms.ColumnHeader CHCommand;
         private System.Windows.Forms.ColumnHeader CHLength;
         private System.Windows.Forms.ColumnHeader CHDPid;
         private System.Windows.Forms.ColumnHeader CHType;
