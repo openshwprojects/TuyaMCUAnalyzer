@@ -22,7 +22,7 @@ namespace TuyaMCUAnalyzer
         public delegate void PacketHandlerDelegate(byte[] data);
         PacketHandlerDelegate receiveCallback;
         
-        int totalBytesReceived;
+        public int totalBytesReceived;
         public SinglePort(Button BT, ComboBox CB, Label LB, PacketHandlerDelegate cb, ComboBox comboBoxBaud)
         {
             this.buttonOpen = BT;
@@ -125,7 +125,7 @@ namespace TuyaMCUAnalyzer
                 int baud = int.Parse(comboBoxBaud.Text);
                 serial = new SerialPort(serialName, baud, Parity.None, 8, StopBits.One);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //addError("Serial port create exception: " + ex.ToString() + Environment.NewLine);
                 return true;
@@ -135,7 +135,7 @@ namespace TuyaMCUAnalyzer
                 serial.ReadBufferSize = 4096 * 2;
                 serial.ReadBufferSize = 3000000;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //addWarning("Setting serial port buffer size exception: " + ex.ToString() + Environment.NewLine);
             }
@@ -143,7 +143,7 @@ namespace TuyaMCUAnalyzer
             {
                 serial.Open();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //addError("Serial port open exception: " + ex.ToString() + Environment.NewLine);
                 onComClose();
